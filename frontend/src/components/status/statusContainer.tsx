@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Status from './status';
 import { StatusType } from '../../lib/types';
+import styles from './statusContainer.module.scss';
 
 const initialStatus: StatusType[] = [
   {
@@ -26,7 +27,7 @@ export default function StatusContainer() {
 
   //status.map
   return (
-    <div>
+    <div className={styles.container}>
       {status.map((item) => {
         return <Status key={item.name} item={item}></Status>;
       })}

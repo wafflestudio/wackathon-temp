@@ -1,0 +1,18 @@
+.name {
+  align-items: center; //temp
+}
+.total {
+  position: absolute;
+  width: 130px;
+  height: 20px;
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+.current {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #d9d9d9;
+  border: 1px solid #828282;
+  border-radius: 50%;
+}
