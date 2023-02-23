@@ -27,7 +27,9 @@ export default function StatusContainer() {
   //status.map
   return (
     <div>
-      <Status></Status>
+      {status.map((item) => {
+        return <Status key={item.name} item={item}></Status>;
+      })}
     </div>
   );
 }
