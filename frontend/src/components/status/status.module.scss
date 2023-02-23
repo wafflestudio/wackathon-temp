@@ -3,11 +3,11 @@
   display: flex;
   height: 40px;
   align-items: center;
+  justify-content: center;
 }
 
 .total {
   position: absolute;
-  align-self: center;
   width: 130px;
   height: 20px;
   background: #d9d9d9;
@@ -17,6 +17,7 @@
   display: flex;
   align-items: center; //temp
   position: absolute;
+  left: 38px; // 추후 수치에 따라 변경할 수 있어야 함
   width: 40px;
   height: 40px;
   background: #d9d9d9;
