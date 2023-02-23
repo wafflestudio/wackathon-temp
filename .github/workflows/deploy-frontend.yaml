@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: frontend
 
     strategy:
       matrix:
@@ -19,16 +19,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: set nodejs
+      - name: Set nodejs
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: npm install
+      - name: Install dependencies
         run: npm install
-      - name: npm run build
+      - name: Build
         run: npm run build
-      - name: deploy
+      - name: Deploy
         uses: reggionick/s3-deploy@v3
         with:
           folder: build
