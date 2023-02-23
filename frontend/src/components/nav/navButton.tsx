@@ -1,5 +1,10 @@
 import React from 'react';
+import styles from './navButton.module.scss';
 
-export default function NavButton() {
-  return <div></div>;
+type navButtonType = {
+  name: string;
+};
+
+export default function NavButton({ name }: navButtonType) {
+  return <button className={styles.button}>{name}</button>;
 }

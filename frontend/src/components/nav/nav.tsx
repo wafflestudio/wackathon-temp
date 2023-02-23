@@ -1,6 +1,15 @@
 import React from 'react';
 import styles from './nav.module.scss';
+import NavButton from './navButton';
+
+const navList = ['main', 'history', 'shop', '???'];
 
 export default function Nav() {
-  return <div>nav</div>;
+  return (
+    <div className={styles.container}>
+      {navList.map((item) => {
+        return <NavButton key={item} name={item}></NavButton>;
+      })}
+    </div>
+  );
 }
