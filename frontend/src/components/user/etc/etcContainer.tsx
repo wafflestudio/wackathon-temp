@@ -5,7 +5,7 @@ import Money from './money';
 import Level from './level';
 export default function EtcContainer() {
   return (
-    <div>
+    <div className={styles.container}>
       <ScreenShot></ScreenShot>
       <Money></Money>
       <Level></Level>
