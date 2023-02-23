@@ -1,6 +1,10 @@
 import React from 'react';
 import styles from './actionButton.module.scss';
 
-export default function ActionButton() {
-  return <div>actionButton</div>;
+type ActionButtonType = {
+  name: string;
+};
+
+export default function ActionButton({ name }: ActionButtonType) {
+  return <button className={styles.button}>{name}</button>;
 }

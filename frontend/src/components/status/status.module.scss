@@ -1,18 +1,26 @@
-.name {
-  align-items: center; //temp
+.container {
+  position: relative;
+  display: flex;
+  height: 40px;
+  align-items: center;
 }
+
 .total {
   position: absolute;
+  align-self: center;
   width: 130px;
   height: 20px;
   background: #d9d9d9;
   border-radius: 10px;
 }
 .current {
+  display: flex;
+  align-items: center; //temp
   position: absolute;
   width: 40px;
   height: 40px;
   background: #d9d9d9;
-  border: 1px solid #828282;
   border-radius: 50%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }

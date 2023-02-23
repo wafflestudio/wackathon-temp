@@ -1,5 +1,9 @@
 .container {
-  margin-top: 27px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+
   display: flex;
   justify-content: space-between;
+  border: 1px solid #d9d9d9;
+  align-items: center;
 }
