@@ -2,12 +2,12 @@ name: Deploy frontend workflow
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - frontend
 
 jobs:
   deploy:
-    name: deploy frontend
+    name: Deploy Frontend
     runs-on: ubuntu-16.04
     defaults:
       run:
