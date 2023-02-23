@@ -1,8 +1,6 @@
 package com.wafflestudio.waffleraise.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
+import jakarta.persistence.*
 
 @Entity
 data class Waffle(
@@ -11,5 +9,11 @@ data class Waffle(
     val name: String,
     val age: Int,
     @OneToMany(mappedBy = "waffle")
-    val owners: MutableList<User> = mutableListOf()
+    val owners: MutableList<User> = mutableListOf(),
+    @Enumerated(EnumType.STRING)
+    val status: WaffleStatus
 )
+
+enum class WaffleStatus {
+    HUNGRY, THIRSTY
+}
