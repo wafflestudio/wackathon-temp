@@ -3,6 +3,7 @@ package com.wafflestudio.waffleraise.entity
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "users")
 data class User(
     @Id
     val id: Long,
