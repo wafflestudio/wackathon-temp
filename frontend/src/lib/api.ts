@@ -1,17 +1,53 @@
 import axios from 'axios';
 import { useEffect, useRef } from 'react';
 
-export const apiLogin = (id: string, password: string) => {
-  return id;
+export const url = (path: string) => {
+  return `http://172.30.1.40:8080/${path}`;
 };
 
-export const apiAction = (action: string) => {
-  return action;
+export const apiGetUserInfo = (id: number) => {
+  return axios({
+    method: 'get',
+    url: url(`/users/id`),
+  });
 };
 
-export const apiGetStatus = () => {};
+export const apiGetHistory = (id: number) => {
+  return axios({
+    method: 'get',
+    url: `/waffles/${id}/histories`,
+  });
+};
 
-export const apiGetHistory = () => {};
+export const apiGetRanking = (id: number) => {
+  return axios({
+    method: 'get',
+    url: `/waffles/${id}/ranking`,
+  });
+};
+
+export const apiAction = (
+  actionType: string,
+  userId: number,
+  waffleId: number
+) => {
+  return axios({
+    method: 'post',
+    url: url(`/waffles/act`),
+    data: {
+      actionType,
+      userId,
+      waffleId,
+    },
+  });
+};
+
+export const apiPoll = (id: number) => {
+  return axios({
+    method: 'get',
+    url: url(`/waffles/${id}/poll`),
+  });
+};
 
 export function getUsernameColor(username: string) {
   // Compute a hash code for the username

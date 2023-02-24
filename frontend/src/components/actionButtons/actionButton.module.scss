@@ -5,3 +5,7 @@ $current-status: 0%;
   height: 60px;
   background: linear-gradient(to top, gray $current-status, transparent 50%);
 }
+
+.img {
+  overflow: hidden;
+}
