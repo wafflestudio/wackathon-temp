@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './historyButton.module.scss';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
-export default function HistoryButton() {
+type HistoryButtonComponentType = {
+  openModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export default function HistoryButton({
+  openModal,
+}: HistoryButtonComponentType) {
   return (
     <div className={styles.container}>
-      <button className={styles.button}>History</button>
+      <button className={styles.button} onClick={openModal}>
+        history
+      </button>
     </div>
   );
 }
