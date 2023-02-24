@@ -1,3 +1,8 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .marginTop {
   width: 390px;
   height: 29px;
@@ -9,4 +14,8 @@
   height: 29px;
 
   background: #d9d9d9;
+}
+
+.blank {
+  height: 60px;
 }
