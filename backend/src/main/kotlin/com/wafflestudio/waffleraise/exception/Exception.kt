@@ -9,3 +9,5 @@ class Exception400(msg: String) : Exception(msg, HttpStatus.BAD_REQUEST)
 class Exception401(msg: String) : Exception(msg, HttpStatus.UNAUTHORIZED)
 class Exception403(msg: String) : Exception(msg, HttpStatus.FORBIDDEN)
 class Exception409(msg: String) : Exception(msg, HttpStatus.CONFLICT)
+
+class Exception429(msg: String) : Exception(msg, HttpStatus.TOO_MANY_REQUESTS)

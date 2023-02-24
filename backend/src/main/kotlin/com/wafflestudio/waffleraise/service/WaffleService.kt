@@ -6,6 +6,7 @@ import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
 import com.wafflestudio.waffleraise.exception.Exception403
 import com.wafflestudio.waffleraise.exception.Exception404
+import com.wafflestudio.waffleraise.exception.Exception429
 import com.wafflestudio.waffleraise.repository.ActionRepository
 import com.wafflestudio.waffleraise.repository.UserActionRepository
 import com.wafflestudio.waffleraise.repository.UserRepository
@@ -32,28 +33,28 @@ class WaffleService(
         when (type) {
             ActionType.FEED -> {
                 if (waffle.status.hungry > 30) {
-                    throw Exception403("배불러")
+                    throw Exception429("배불러")
                 }
                 waffle.status.hungry = 100.0
             }
 
             ActionType.WATER -> {
                 if (waffle.status.thirsty > 30) {
-                    throw Exception403("목 안말라")
+                    throw Exception429("목 안말라")
                 }
                 waffle.status.thirsty = 100.0
             }
 
             ActionType.BATHE -> {
                 if (waffle.status.cleanliness > 30) {
-                    throw Exception403("아직 뽀송뽀송해")
+                    throw Exception429("아직 뽀송뽀송해")
                 }
                 waffle.status.cleanliness = 100.0
             }
 
             ActionType.CURE -> {
                 if (waffle.status.health > 30) {
-                    throw Exception403("이미 건강해")
+                    throw Exception429("이미 건강해")
                 }
                 waffle.status.health = 100.0
             }
@@ -84,7 +85,7 @@ class WaffleService(
 
     fun poll(waffleId: Long): PollingDto {
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
-        val lastUserAction = userActionRepository.findByWaffleIdOrderByCreatedAtDesc(waffleId)
+        val lastUserAction = userActionRepository.findTopByWaffleIdOrderByCreatedAtDesc(waffleId)
         return PollingDto(WaffleDto.of(waffle), UserActionDto.of(lastUserAction))
     }
 }
