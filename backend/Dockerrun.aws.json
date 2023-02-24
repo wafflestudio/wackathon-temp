@@ -2,7 +2,7 @@
     "AWSEBDockerrunVersion": "1",
     "Logging": "/tmp/waffle-raise",
     "Image": {
-      "Name": "${ECR_IMAGE}",
+      "Name": "ECR_IMAGE",
       "Update": "true"
     },
     "Ports": [

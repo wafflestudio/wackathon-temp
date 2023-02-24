@@ -33,8 +33,8 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker image ls
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          sed -i 's/ECR_IMAGE/'"$ECR_REGISTRY"'\/'"$ECR_REPOSITORY"':'"$IMAGE_TAG"'/' filename
           aws s3 cp Dockerrun.aws.json s3://$S3_SERVER_BUCKET/Dockerrun.aws.json
           aws elasticbeanstalk create-application-version --application-name $EB_APPLICATION_NAME --version-label $IMAGE_TAG --source-bundle S3Bucket=$S3_SERVER_BUCKET,S3Key=Dockerrun.aws.json
           aws elasticbeanstalk update-environment --application-name $EB_APPLICATION_NAME --environment-name $EB_ENV_NAME --version-label=$IMAGE_TAG
