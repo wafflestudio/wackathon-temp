@@ -7,17 +7,25 @@
   margin-top: 15px;
 }
 
+.img {
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+  background-color: white;
+}
+
 .name {
   position: absolute;
   display: flex;
+  margin-left: 5px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #d9d9d9;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  // background: #d9d9d9;
+  // box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 }
 
 $contribute-width: 10px;
