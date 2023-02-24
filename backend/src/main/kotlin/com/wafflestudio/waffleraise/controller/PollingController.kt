@@ -14,6 +14,6 @@ class PollingController(
 
     @PostMapping("/poll")
     fun poll(@RequestBody pollingRequest: PollingRequest): PollingDto {
-        return pollingService.poll(pollingRequest.userId, pollingRequest.waffleId)
+        return pollingService.poll(pollingRequest.waffleId)
     }
 }
