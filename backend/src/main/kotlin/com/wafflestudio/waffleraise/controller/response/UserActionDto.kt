@@ -5,16 +5,16 @@ import com.wafflestudio.waffleraise.entity.UserAction
 import java.time.LocalDateTime
 
 data class UserActionDto(
-    val createdAt: LocalDateTime,
-    val action: ActionType,
-    val username: String
+    val createdAt: LocalDateTime?,
+    val action: ActionType?,
+    val username: String?
 ) {
     companion object {
         fun of(userAction: UserAction?): UserActionDto {
             return UserActionDto(
-                createdAt = userAction?.createdAt!!,
-                action = userAction.action.type,
-                username = userAction.user.username
+                createdAt = userAction?.createdAt,
+                action = userAction?.action?.type,
+                username = userAction?.user?.username
             )
         }
     }
