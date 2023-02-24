@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './actionButton.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useStatusContext } from '../../context/statusContext';
 import feedIcon from '../../resources/feed.svg';
 import milkIcon from '../../resources/milk.svg';
@@ -12,31 +12,40 @@ type ActionButtonType = {
 };
 
 export default function ActionButton({ name }: ActionButtonType) {
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const { userId } = useParams();
+  // const location = useLocation();
+  // const currentPath = location.pathname; 일단 안씀
+
+  const { status } = useStatusContext();
 
   const { doAction } = useStatusContext();
 
   const action = () => {
-    doAction(name, 1, 1);
+    doAction(name, Number(userId), 1);
   };
   const color = 'gray';
-  const status = `${40}%`;
+
+  let newName = '';
   let icon = '';
   switch (name) {
     case 'FEED':
       icon = feedIcon;
+      newName = 'hungry';
       break;
-    case 'MILK':
+    case 'WATER':
       icon = milkIcon;
+      newName = 'thirsty';
       break;
     case 'BATHE':
       icon = batheIcon;
+      newName = 'cleanliness';
       break;
     case 'CURE':
       icon = pillIcon;
+      newName = 'health';
       break;
   }
+  const statusNumber = status && status?.waffle.status[newName];
 
   return (
     <div className={styles.container}>
@@ -45,7 +54,9 @@ export default function ActionButton({ name }: ActionButtonType) {
         src={icon}
         onClick={action}
         style={{
-          background: `linear-gradient(to top, ${color} ${status}, transparent 50%)`,
+          background: `linear-gradient(to top, ${color} ${
+            statusNumber ? statusNumber : 0
+          }%, transparent 50%)`,
           objectFit: 'cover',
           overflow: 'hidden',
           borderRadius: '10px',

@@ -17,7 +17,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     //history 갱신도 여기서 해줘야 하나?
     const res = await apiPoll(1);
     console.log(res);
-    setStatus(res.data.waffle);
+    setStatus(res.data);
   }, 10000);
 
   //action

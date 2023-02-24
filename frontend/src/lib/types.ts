@@ -13,8 +13,9 @@ export type StatusType = {
 
 export type CharacterType = {
   level: number;
-  status: StatusType;
+  status: { [key: string]: number | undefined };
 };
+
 export type InfoType = {
   lastUserAction: lastUserAction;
   waffle: CharacterType;

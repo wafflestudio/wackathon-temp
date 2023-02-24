@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './actionButtons.module.scss';
 import ActionButton from './actionButton';
 
-const activeButtons = ['FEED', 'MILK', 'BATHE', 'CURE'];
+const activeButtons = ['FEED', 'WATER', 'BATHE', 'CURE'];
 
 export default function ActionButtons() {
   return (
