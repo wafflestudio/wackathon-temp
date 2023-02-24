@@ -8,7 +8,7 @@ data class Waffle(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
     val name: String,
-    val level: Int,
+    var level: Int,
     @OneToMany(mappedBy = "waffle")
     val owners: MutableList<User> = mutableListOf(),
     @Embedded

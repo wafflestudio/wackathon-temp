@@ -11,7 +11,7 @@ data class WaffleDto(
         fun of(waffle: Waffle): WaffleDto {
             return WaffleDto(
                 status = waffle.status,
-                level = waffle.level
+                level = waffle.level / 50
             )
         }
     }
