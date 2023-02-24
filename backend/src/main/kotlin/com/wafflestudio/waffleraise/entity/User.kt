@@ -6,7 +6,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
-@EntityListeners(AuditingEntityListener::class)
 @Table(name = "users")
 data class User(
     @Id
@@ -18,7 +17,5 @@ data class User(
     val userActions: MutableList<UserAction> = mutableListOf(),
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "waffle_id")
-    val waffle: Waffle,
-    @CreatedDate
-    var lastOnline: LocalDateTime? = null
+    val waffle: Waffle
 )

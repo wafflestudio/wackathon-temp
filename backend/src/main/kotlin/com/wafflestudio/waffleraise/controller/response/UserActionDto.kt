@@ -10,9 +10,9 @@ data class UserActionDto(
     val username: String
 ) {
     companion object {
-        fun of(userAction: UserAction): UserActionDto {
+        fun of(userAction: UserAction?): UserActionDto {
             return UserActionDto(
-                createdAt = userAction.createdAt!!,
+                createdAt = userAction?.createdAt!!,
                 action = userAction.action.type,
                 username = userAction.user.username
             )

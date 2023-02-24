@@ -10,7 +10,6 @@ import com.wafflestudio.waffleraise.repository.WaffleRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime
 
 @Service
 @Transactional
@@ -23,14 +22,7 @@ class PollingService(
     fun poll(userId: Long, waffleId: Long): PollingDto {
         val user = userRepository.findByIdOrNull(userId) ?: throw Exception404("404")
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
-        val userActions =
-            userActionRepository.findAllByCreatedAtBetweenAndWaffleIdOrderByCreatedAtDesc(
-                user.lastOnline!!,
-                LocalDateTime.now(),
-                waffleId
-            )
-        user.lastOnline = LocalDateTime.now()
-        val userActionsDto = userActions.map { UserActionDto.of(it) }
-        return PollingDto(WaffleDto.of(waffle), userActionsDto)
+        val lastUserAction = userActionRepository.findByWaffleIdOrderByCreatedAtDesc(waffleId)
+        return PollingDto(WaffleDto.of(waffle), UserActionDto.of(lastUserAction))
     }
 }
