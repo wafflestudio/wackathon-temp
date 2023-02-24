@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './character.module.scss';
 import { useStatusContext } from '../../context/statusContext';
 import { useParams } from 'react-router-dom';
-import waffleLookingAtMe from '../../resources/testwaffle.svg';
-import waffleLookingAtYou from '../../resources/tesetwaffle2.svg';
+import waffleLookingAtMe from '../../resources/waffle_basic.gif';
+import waffleLookingAtYou from '../../resources/waffle_dirty.gif';
 
 export default function Character() {
   //여기서 useEffect로 character의 state 갱신해주는게 좋을듯?
