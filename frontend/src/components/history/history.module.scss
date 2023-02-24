@@ -3,7 +3,7 @@
   background: #ffffff;
   border-bottom: 1px solid #d9d9d9;
   display: flex;
-  padding: 3%;
+  padding: 1%;
   align-items: center;
 
   .profile {
@@ -31,6 +31,8 @@
     margin-bottom: 5px;
   }
   .time {
+    width: max-content;
+    box-sizing: border-box;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -44,7 +46,7 @@
 
   $user-name: black;
   .userName {
-    margin-left: 45%;
+    margin-left: 23%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;

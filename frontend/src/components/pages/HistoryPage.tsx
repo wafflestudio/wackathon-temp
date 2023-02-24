@@ -10,12 +10,12 @@ import { apiGetHistory, apiGetRanking } from '../../lib/api';
 const initialHistory: HistoryType[] = [
   {
     username: '채원',
-    time: '2022-02-02',
+    createdAt: '2022-02-02',
     action: '밥주기',
   },
   {
     username: '동현',
-    time: '2022-02-02',
+    createdAt: '2022-02-02',
     action: '씻기기',
   },
 ];
@@ -31,7 +31,8 @@ export default function HistoryPage() {
       const rankingRes = await apiGetRanking(1);
       setRanking(rankingRes.data.users);
       const historyRes = await apiGetHistory(1);
-      console.log(rankingRes);
+      console.log(historyRes);
+      setHistory(historyRes.data);
     })();
   }, []);
 

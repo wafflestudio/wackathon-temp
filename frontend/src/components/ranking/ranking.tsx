@@ -8,7 +8,6 @@ type RankingComponentType = {
 };
 
 export default function Ranking({ detail }: RankingComponentType) {
-  console.log(detail);
   return (
     <div className={styles.container}>
       <img src={profile} className={styles.img}></img>

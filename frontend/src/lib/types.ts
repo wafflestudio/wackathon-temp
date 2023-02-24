@@ -29,7 +29,7 @@ export type RankingType = {
 export type HistoryType = {
   username: string;
   action: string;
-  time: string;
+  createdAt: string;
 };
 
 export type WaffleType = {
