@@ -1,0 +1,56 @@
+.container {
+  box-sizing: border-box;
+  background: #ffffff;
+  border-bottom: 1px solid #d9d9d9;
+  display: flex;
+  padding: 3%;
+  align-items: center;
+
+  .profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+  }
+
+  .actionContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7%;
+  }
+  .action {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+    margin-bottom: 5px;
+  }
+  .time {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+
+    color: #828282;
+  }
+
+  $user-name: black;
+  .userName {
+    position: absolute;
+    right: 10%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: $user-name;
+  }
+}

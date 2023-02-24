@@ -9,13 +9,36 @@
 }
 
 .modal {
+  box-sizing: border-box; //이걸 꼭 해줘야 함!!
+  position: relative;
+  display: flex;
   width: 320px;
   height: 500px;
   background: #ffffff;
   background-color: white;
   border-radius: 10px;
-  position: fixed;
-  left: 10%;
+  left: calc(50% - 160px);
   top: 20%;
   z-index: 11;
+  flex-direction: column;
+  padding: 5%;
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 17px;
+  }
+
+  .title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+
+    color: #000000;
+  }
+}
+
+.historyContainer {
+  margin-top: 8%;
 }
