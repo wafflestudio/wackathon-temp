@@ -1,9 +1,6 @@
 package com.wafflestudio.waffleraise.service
 
-import com.wafflestudio.waffleraise.controller.response.RankingDto
-import com.wafflestudio.waffleraise.controller.response.UserActionDto
-import com.wafflestudio.waffleraise.controller.response.UserDto
-import com.wafflestudio.waffleraise.controller.response.WaffleDto
+import com.wafflestudio.waffleraise.controller.response.*
 import com.wafflestudio.waffleraise.entity.Action
 import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
@@ -81,5 +78,11 @@ class WaffleService(
         }
         userDtos.sortByDescending { it.contribution }
         return RankingDto(WaffleDto.of(waffle), userDtos)
+    }
+
+    fun poll(waffleId: Long): PollingDto {
+        val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
+        val lastUserAction = userActionRepository.findByWaffleIdOrderByCreatedAtDesc(waffleId)
+        return PollingDto(WaffleDto.of(waffle), UserActionDto.of(lastUserAction))
     }
 }

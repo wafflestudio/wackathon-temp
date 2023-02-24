@@ -1,6 +1,8 @@
 package com.wafflestudio.waffleraise.controller
 
 import com.wafflestudio.waffleraise.controller.request.ActRequest
+import com.wafflestudio.waffleraise.controller.request.PollingRequest
+import com.wafflestudio.waffleraise.controller.response.PollingDto
 import com.wafflestudio.waffleraise.controller.response.RankingDto
 import com.wafflestudio.waffleraise.controller.response.UserActionDto
 import com.wafflestudio.waffleraise.service.WaffleService
@@ -30,5 +32,10 @@ class WaffleController(
     @GetMapping("/{waffle-id}/ranking")
     fun getRanking(@PathVariable("waffle-id") waffleId: Long): RankingDto {
         return waffleService.getRanking(waffleId)
+    }
+
+    @GetMapping("/{waffle-id}/poll")
+    fun poll(@PathVariable("waffle-id") waffleId: Long): PollingDto {
+        return waffleService.poll(waffleId)
     }
 }
