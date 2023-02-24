@@ -7,6 +7,7 @@ export default function Character() {
   const { user } = useStatusContext();
   const { userId } = useParams();
 
+  console.log(user === Number(userId));
   //let icon = ''
   //if userid !== user back으로 설정
   //  if(status == hungry)

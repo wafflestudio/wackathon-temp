@@ -7,7 +7,7 @@ type StatusContextType = {
   status: InfoType | undefined;
   getUserInfo: (id: number) => {};
   doAction: (actionType: string, userId: number, waffleId: number) => {};
-  user: string;
+  user: number;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
@@ -15,7 +15,7 @@ const StatusContext = createContext<StatusContextType>({} as StatusContextType);
 export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<InfoType | undefined>();
 
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(0);
 
   const { userId } = useParams();
 
@@ -24,7 +24,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     const res = await apiPoll(1);
     console.log(res);
     setStatus(res.data);
-    setUser(res.data.lastUserAction.username);
+    setUser(res.data.lastUserAction.userId);
   }, 10000);
 
   //action
