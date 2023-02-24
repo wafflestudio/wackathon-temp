@@ -33,13 +33,11 @@ export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryType[]>(initialHistory);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
+  function openModal() {
     setIsOpen(true);
   }
 
-  function closeModal(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
+  function closeModal() {
     setIsOpen(false);
   }
 
@@ -48,7 +46,7 @@ export default function HistoryPage() {
       <Character></Character>
       <Rankings></Rankings>
       <HistoryButton openModal={openModal}></HistoryButton>
-      {modalIsOpen && <HistoryModal list={history} />}
+      {modalIsOpen && <HistoryModal list={history} closeModal={closeModal} />}
     </PageTemplate>
   );
 }
