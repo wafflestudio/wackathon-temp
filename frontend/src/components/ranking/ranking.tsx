@@ -12,9 +12,9 @@ export default function Ranking({ detail }: RankingComponentType) {
       <div className={styles.name}>{detail.userName}</div>
       <div
         className={styles.contribute}
-        style={{ width: `${detail.contribute * 2}px` }}
+        style={{ width: `${detail.contribution * 2}px` }}
       >
-        {detail.contribute}
+        {detail.contribution}
       </div>
     </div>
   );

@@ -15,14 +15,14 @@ export const apiGetUserInfo = (id: number) => {
 export const apiGetHistory = (id: number) => {
   return axios({
     method: 'get',
-    url: `/waffles/${id}/histories`,
+    url: url(`/waffles/${id}/histories`),
   });
 };
 
 export const apiGetRanking = (id: number) => {
   return axios({
     method: 'get',
-    url: `/waffles/${id}/ranking`,
+    url: url(`/waffles/${id}/ranking`),
   });
 };
 

@@ -6,14 +6,12 @@ import { RankingType } from '../../lib/types';
 const initialOwners: RankingType[] = [
   {
     userName: '엄마',
-    contribute: 80,
+    contribution: 0,
   },
   {
     userName: '아빠',
-    contribute: 90,
+    contribution: 0,
   },
-  { userName: 'papa', contribute: 10 },
-  { userName: 'akak', contribute: 10 },
 ];
 
 export default function Rankings() {

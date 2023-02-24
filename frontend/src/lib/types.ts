@@ -23,7 +23,7 @@ export type InfoType = {
 
 export type RankingType = {
   userName: string;
-  contribute: number;
+  contribution: number;
 };
 
 export type HistoryType = {

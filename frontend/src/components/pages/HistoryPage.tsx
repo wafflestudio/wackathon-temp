@@ -4,7 +4,8 @@ import Character from '../character/character';
 import Rankings from '../ranking/rankings';
 import HistoryButton from '../history/historyButton';
 import HistoryModal from '../history/historyModal';
-import { HistoryType } from '../../lib/types';
+import { HistoryType, RankingType } from '../../lib/types';
+import { apiGetHistory, apiGetRanking } from '../../lib/api';
 
 const initialHistory: HistoryType[] = [
   {
@@ -63,9 +64,16 @@ export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryType[]>(initialHistory);
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  const [ranking, setRanking] = useState<RankingType[]>();
+
   useEffect(() => {
-    //getHistory??
-  });
+    (async () => {
+      const rankingRes = await apiGetRanking(1);
+      setRanking(rankingRes.data);
+      const historyRes = await apiGetHistory(1);
+      console.log(rankingRes);
+    })();
+  }, []);
 
   function openModal() {
     setIsOpen(true);
