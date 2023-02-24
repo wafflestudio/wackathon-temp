@@ -1,5 +1,6 @@
 package com.wafflestudio.waffleraise.service
 
+import com.wafflestudio.waffleraise.controller.response.UserActionDto
 import com.wafflestudio.waffleraise.entity.Action
 import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class ActionService(
+class WaffleService(
     private val userRepository: UserRepository,
     private val waffleRepository: WaffleRepository,
     private val userActionRepository: UserActionRepository
@@ -32,5 +33,10 @@ class ActionService(
         }
         val userAction = UserAction.create(user, action, waffle)
         userActionRepository.save(userAction)
+    }
+
+    fun getHistories(waffleId: Long): List<UserActionDto> {
+        val histories = userActionRepository.findAllByWaffleId(waffleId)
+        return histories.map { UserActionDto.of(it) }
     }
 }
