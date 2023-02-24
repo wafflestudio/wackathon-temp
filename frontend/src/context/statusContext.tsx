@@ -12,8 +12,13 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<StatusType[] | undefined>();
 
   useInterval(() => {
+    //history 갱신도 여기서 해줘야 하나?
     console.log('hi');
   }, 1000);
+
+  //action
+
+  //getStatus
 
   return (
     <StatusContext.Provider

@@ -9,6 +9,10 @@ export const apiAction = (action: string) => {
   return action;
 };
 
+export const apiGetStatus = () => {};
+
+export const apiGetHistory = () => {};
+
 export function getUsernameColor(username: string) {
   // Compute a hash code for the username
   let hash = 0;

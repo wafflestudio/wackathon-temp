@@ -6,5 +6,13 @@ type ActionButtonType = {
 };
 
 export default function ActionButton({ name }: ActionButtonType) {
-  return <button className={styles.button}>{name}</button>;
+  const action = () => {
+    console.log(name);
+  };
+
+  return (
+    <button className={styles.button} onClick={action}>
+      {name}
+    </button>
+  );
 }
