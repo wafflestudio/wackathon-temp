@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useRef } from 'react';
 
 export const url = (path: string) => {
-  return `http://172.30.1.40:8080/${path}`;
+  return `http://d3t0fj5iyklnxv.cloudfront.net/${path}`;
 };
 
 export const apiGetUserInfo = (id: number) => {

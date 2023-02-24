@@ -23,7 +23,6 @@ export default function ActionButton({ name }: ActionButtonType) {
   const action = () => {
     doAction(name, Number(userId), 1);
   };
-  const color = 'gray';
   let newAction = '';
   let newName = '';
   let icon = '';
@@ -49,7 +48,19 @@ export default function ActionButton({ name }: ActionButtonType) {
       newAction = '약 주기';
       break;
   }
-  const statusNumber = status && status?.waffle.status[newName];
+  const statusNumber = status?.waffle.status[newName] ?? 0;
+  let color = '';
+  switch (true) {
+    case statusNumber >= 70:
+      color = 'green';
+      break;
+    case statusNumber >= 30:
+      color = 'yellow';
+      break;
+    case statusNumber >= 0:
+      color = 'red';
+      break;
+  }
 
   return (
     <div className={styles.container}>

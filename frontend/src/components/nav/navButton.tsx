@@ -20,7 +20,7 @@ export default function NavButton({ name }: navButtonType) {
 
   const style =
     buttonUrl === name
-      ? { backgroundColor: 'gray' }
+      ? { backgroundColor: '#9B9B9B' }
       : { backgroundColor: 'white' };
 
   const navigate = useNavigate();
