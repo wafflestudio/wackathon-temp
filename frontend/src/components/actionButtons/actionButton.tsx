@@ -24,25 +24,29 @@ export default function ActionButton({ name }: ActionButtonType) {
     doAction(name, Number(userId), 1);
   };
   const color = 'gray';
-
+  let newAction = '';
   let newName = '';
   let icon = '';
   switch (name) {
     case 'FEED':
       icon = feedIcon;
       newName = 'hungry';
+      newAction = '밥 주기';
       break;
     case 'WATER':
       icon = milkIcon;
       newName = 'thirsty';
+      newAction = '우유 주기';
       break;
     case 'BATHE':
       icon = batheIcon;
       newName = 'cleanliness';
+      newAction = '씻기기';
       break;
     case 'CURE':
       icon = pillIcon;
       newName = 'health';
+      newAction = '약 주기';
       break;
   }
   const statusNumber = status && status?.waffle.status[newName];
@@ -62,7 +66,7 @@ export default function ActionButton({ name }: ActionButtonType) {
           borderRadius: '10px',
         }}
       ></img>
-      {name}
+      {newAction}
     </div>
   );
 }
