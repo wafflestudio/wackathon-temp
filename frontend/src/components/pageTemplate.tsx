@@ -1,6 +1,5 @@
 import React from 'react';
 import UserContainer from './user/userContainer';
-import StatusContainer from './status/statusContainer';
 import Nav from './nav/nav';
 import styles from './pageTemplate.module.scss';
 

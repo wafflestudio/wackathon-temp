@@ -1,6 +1,23 @@
+export type lastUserAction = {
+  action: string;
+  createdAt: string;
+  username: string;
+};
+
 export type StatusType = {
-  name: string;
-  status: number;
+  cleanliness: number;
+  health: number;
+  hungry: number;
+  thirsty: number;
+};
+
+export type CharacterType = {
+  level: number;
+  status: StatusType;
+};
+export type InfoType = {
+  lastUserAction: lastUserAction;
+  waffle: CharacterType;
 };
 
 export type RankingType = {

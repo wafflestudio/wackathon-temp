@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageTemplate from '../pageTemplate';
 import Character from '../character/character';
 import Rankings from '../ranking/rankings';
@@ -62,6 +62,10 @@ const initialHistory: HistoryType[] = [
 export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryType[]>(initialHistory);
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    //getHistory??
+  });
 
   function openModal() {
     setIsOpen(true);

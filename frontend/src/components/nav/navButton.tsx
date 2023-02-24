@@ -13,10 +13,10 @@ type navButtonType = {
 };
 
 export default function NavButton({ name }: navButtonType) {
-  // const { nav } = useParams();
+  const { userId } = useParams();
   const location = useLocation();
   const path = location.pathname;
-  const buttonUrl = path.substring(path.lastIndexOf('/') + 1);
+  const buttonUrl = path.split('/')[1];
 
   const style =
     buttonUrl === name
@@ -30,7 +30,7 @@ export default function NavButton({ name }: navButtonType) {
     if (name === 'decoration' || name === 'community') {
       toast('Under development');
     } else {
-      navigate(`/${name}`);
+      navigate(`/${name}/${userId}`);
     }
   };
 

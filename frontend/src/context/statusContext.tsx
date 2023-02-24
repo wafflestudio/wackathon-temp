@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
-import { StatusType } from '../lib/types';
+import { InfoType } from '../lib/types';
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
 
 type StatusContextType = {
-  status: StatusType[] | undefined;
+  status: InfoType | undefined;
   getUserInfo: (id: number) => {};
   doAction: (actionType: string, userId: number, waffleId: number) => {};
 };
@@ -11,13 +11,13 @@ type StatusContextType = {
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
 
 export function StatusProvider({ children }: { children: React.ReactNode }) {
-  const [status, setStatus] = useState<StatusType[] | undefined>();
+  const [status, setStatus] = useState<InfoType | undefined>();
 
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
-    // const res = await apiPoll(1);
-    // console.log(res);
-    // console.log('hi');
+    const res = await apiPoll(1);
+    console.log(res);
+    setStatus(res.data.waffle);
   }, 10000);
 
   //action
