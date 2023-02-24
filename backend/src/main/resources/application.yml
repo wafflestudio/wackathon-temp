@@ -7,16 +7,18 @@ spring:
       matching-strategy: ant_path_matcher
 ---
 spring:
-  profiles:
-    active: local
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/waffle_raise
     username: root
     password: password
 ---
 spring:
-  profiles:
-    active: dev
+  config:
+    activate:
+      on-profile: dev
   datasource:
     url:
     username:
