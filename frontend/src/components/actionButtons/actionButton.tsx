@@ -39,16 +39,19 @@ export default function ActionButton({ name }: ActionButtonType) {
   }
 
   return (
-    <img
-      className={styles.img}
-      src={icon}
-      onClick={action}
-      style={{
-        background: `linear-gradient(to top, ${color} ${status}, transparent 50%)`,
-        objectFit: 'cover',
-        overflow: 'hidden',
-        borderRadius: '10px',
-      }}
-    ></img>
+    <div className={styles.container}>
+      <img
+        className={styles.img}
+        src={icon}
+        onClick={action}
+        style={{
+          background: `linear-gradient(to top, ${color} ${status}, transparent 50%)`,
+          objectFit: 'cover',
+          overflow: 'hidden',
+          borderRadius: '10px',
+        }}
+      ></img>
+      {name}
+    </div>
   );
 }

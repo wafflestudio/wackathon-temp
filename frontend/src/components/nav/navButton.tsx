@@ -51,7 +51,7 @@ export default function NavButton({ name }: navButtonType) {
   }
 
   return (
-    <>
+    <div className={styles.container} style={style}>
       {/* <button className={styles.button} onClick={handleNav}>
         {name}
       </button> */}
@@ -61,6 +61,6 @@ export default function NavButton({ name }: navButtonType) {
         onClick={handleNav}
         style={style}
       ></img>
-    </>
+    </div>
   );
 }
