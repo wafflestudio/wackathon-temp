@@ -11,6 +11,7 @@ class WebConfig : WebMvcConfigurer {
             .addMapping("/**")
             .allowedOrigins("*")
             .allowedMethods("*")
+            .allowedHeaders("*")
             .maxAge(3000)
     }
 }
