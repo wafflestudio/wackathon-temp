@@ -6,6 +6,7 @@ import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
 import com.wafflestudio.waffleraise.exception.Exception403
 import com.wafflestudio.waffleraise.exception.Exception404
+import com.wafflestudio.waffleraise.repository.ActionRepository
 import com.wafflestudio.waffleraise.repository.UserActionRepository
 import com.wafflestudio.waffleraise.repository.UserRepository
 import com.wafflestudio.waffleraise.repository.WaffleRepository
@@ -18,13 +19,14 @@ import org.springframework.transaction.annotation.Transactional
 class WaffleService(
     private val userRepository: UserRepository,
     private val waffleRepository: WaffleRepository,
-    private val userActionRepository: UserActionRepository
+    private val userActionRepository: UserActionRepository,
+    private val actionRepository: ActionRepository
 ) {
 
     fun act(userId: Long, waffleId: Long, type: ActionType) {
         val user = userRepository.findByIdOrNull(userId) ?: throw Exception404("404")
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
-        val action = Action(type = type)
+        val action = actionRepository.findByType(type)
         user.score += action.type.score
         waffle.level += action.type.score
         when (type) {
