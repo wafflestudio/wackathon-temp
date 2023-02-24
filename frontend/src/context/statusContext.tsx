@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { InfoType, UserType } from "../lib/types";
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from "../lib/api";
 import { useParams } from "react-router-dom";
+=======
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { InfoType, UserType } from '../lib/types';
+import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
+import { useParams } from 'react-router-dom';
+import waffleBasic from '../resources/waffle_basic.gif';
+>>>>>>> 236448e (character icon logic action buttonㅇㅔ 추가)
 
 type StatusContextType = {
   status: InfoType | undefined;
@@ -9,6 +17,8 @@ type StatusContextType = {
   doPoll: () => {};
   doAction: (actionType: string, userId: number, waffleId: number) => {};
   user: number;
+  characterImg: string;
+  setCharacterImg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
@@ -17,6 +27,8 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<InfoType | undefined>();
 
   const [user, setUser] = useState(0);
+
+  const [characterImg, setCharacterImg] = useState(waffleBasic);
 
   const { userId } = useParams();
 
@@ -51,6 +63,8 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
   return (
     <StatusContext.Provider
       value={{
+        characterImg,
+        setCharacterImg,
         status,
         getUserInfo,
         doPoll,

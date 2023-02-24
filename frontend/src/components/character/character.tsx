@@ -15,12 +15,15 @@ export default function Character() {
   const { status } = useStatusContext();
   const { userId } = useParams();
 
+  const { characterImg, setCharacterImg } = useStatusContext();
+
   console.log(status?.waffle.status.hungry + 'hungry');
 
   let icon = '';
   if (user === Number(userId)) {
     //status에 따라 분기처리
-    icon = waffleBasic;
+    //set
+    icon = characterImg;
   } else {
     icon = waffleDirty;
   }

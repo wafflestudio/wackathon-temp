@@ -15,6 +15,7 @@ export default function ActionButton({ name }: ActionButtonType) {
   const { userId } = useParams();
   // const location = useLocation();
   // const currentPath = location.pathname; 일단 안씀
+  const { characterImg, setCharacterImg } = useStatusContext();
 
   const { status } = useStatusContext();
 
