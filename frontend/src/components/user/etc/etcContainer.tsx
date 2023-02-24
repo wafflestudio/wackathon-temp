@@ -6,8 +6,8 @@ import Level from './level';
 export default function EtcContainer() {
   return (
     <div className={styles.container}>
-      <ScreenShot></ScreenShot>
       <Money></Money>
+      <ScreenShot></ScreenShot>
       <Level></Level>
     </div>
   );

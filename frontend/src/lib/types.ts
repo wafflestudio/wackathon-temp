@@ -43,9 +43,9 @@ export type WaffleType = {
 };
 
 export type UserType = {
-  id: number;
-  last_online: string;
-  score: number;
-  username: string;
-  waffle_id: number;
+  user: {
+    contribution: number;
+    username: string;
+  };
+  waffle: CharacterType;
 };

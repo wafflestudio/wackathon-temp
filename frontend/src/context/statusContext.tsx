@@ -1,17 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
-import { InfoType } from '../lib/types';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { InfoType, UserType } from '../lib/types';
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
+import { useParams } from 'react-router-dom';
 
 type StatusContextType = {
   status: InfoType | undefined;
   getUserInfo: (id: number) => {};
   doAction: (actionType: string, userId: number, waffleId: number) => {};
+  user: UserType | undefined;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
 
 export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<InfoType | undefined>();
+
+  const [user, setUser] = useState<UserType | undefined>();
+
+  const { userId } = useParams();
 
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
@@ -27,7 +33,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     waffleId: number
   ) => {
     const res = await apiAction(actionType, userId, waffleId);
-    console.log(res);
+    console.log(res.data);
   };
 
   //getStatus
@@ -42,6 +48,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
         status,
         getUserInfo,
         doAction,
+        user,
       }}
     >
       {children}

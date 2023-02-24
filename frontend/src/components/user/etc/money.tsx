@@ -6,7 +6,7 @@ export default function Money() {
   return (
     <div className={styles.container}>
       <img src={money}></img>
-      money
+      1,000
     </div>
   );
 }

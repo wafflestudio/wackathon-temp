@@ -19,8 +19,12 @@ export default function ScreenShot() {
 
   return (
     <div className={styles.container} ref={myRef}>
-      <img src={screenShot} onClick={takeScreenshot}></img>
-      스샷
+      <img
+        className={styles.img}
+        src={screenShot}
+        onClick={takeScreenshot}
+      ></img>
+      <div className={styles.text}>screenshot</div>
     </div>
   );
 }

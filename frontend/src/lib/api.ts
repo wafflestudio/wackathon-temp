@@ -8,7 +8,7 @@ export const url = (path: string) => {
 export const apiGetUserInfo = (id: number) => {
   return axios({
     method: 'get',
-    url: url(`/users/id`),
+    url: url(`/users/${id}`),
   });
 };
 
