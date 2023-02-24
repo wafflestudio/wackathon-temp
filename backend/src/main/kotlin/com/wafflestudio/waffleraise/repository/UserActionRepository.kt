@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDateTime
 
 interface UserActionRepository : JpaRepository<UserAction, Long> {
-    fun findAllByCreatedAtBetweenAndWaffleId(
+    fun findAllByCreatedAtBetweenAndWaffleIdOrderByCreatedAtDesc(
         startDate: LocalDateTime,
         endDate: LocalDateTime,
         waffleId: Long
     ): List<UserAction>
 
-    fun findAllByWaffleId(waffleId: Long): List<UserAction>
+    fun findAllByWaffleIdOrderByCreatedAtDesc(waffleId: Long): List<UserAction>
 }

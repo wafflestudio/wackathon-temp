@@ -36,7 +36,7 @@ class WaffleService(
     }
 
     fun getHistories(waffleId: Long): List<UserActionDto> {
-        val histories = userActionRepository.findAllByWaffleId(waffleId)
+        val histories = userActionRepository.findAllByWaffleIdOrderByCreatedAtDesc(waffleId)
         return histories.map { UserActionDto.of(it) }
     }
 }

@@ -24,7 +24,11 @@ class PollingService(
         val user = userRepository.findByIdOrNull(userId) ?: throw Exception404("404")
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
         val userActions =
-            userActionRepository.findAllByCreatedAtBetweenAndWaffleId(user.lastOnline!!, LocalDateTime.now(), waffleId)
+            userActionRepository.findAllByCreatedAtBetweenAndWaffleIdOrderByCreatedAtDesc(
+                user.lastOnline!!,
+                LocalDateTime.now(),
+                waffleId
+            )
         val userActionsDto = userActions.map { UserActionDto.of(it) }
 
         return PollingDto(WaffleDto.of(waffle), userActionsDto)
