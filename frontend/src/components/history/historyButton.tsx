@@ -13,7 +13,7 @@ export default function HistoryButton({
   return (
     <div className={styles.container}>
       <button className={styles.button} onClick={openModal}>
-        history
+        History
       </button>
     </div>
   );

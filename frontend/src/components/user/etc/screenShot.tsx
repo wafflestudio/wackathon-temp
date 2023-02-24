@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styles from './screenShot.module.scss';
 import html2canvas from 'html2canvas';
+import screenShot from '../../../resources/screenshot.svg';
 
 export default function ScreenShot() {
   const myRef = useRef<HTMLDivElement>(null);
@@ -17,10 +18,9 @@ export default function ScreenShot() {
   };
 
   return (
-    <div ref={myRef}>
-      <button className={styles.box} onClick={takeScreenshot}>
-        스샷
-      </button>
+    <div className={styles.container} ref={myRef}>
+      <img src={screenShot} onClick={takeScreenshot}></img>
+      스샷
     </div>
   );
 }
