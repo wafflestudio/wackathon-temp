@@ -6,7 +6,7 @@ import PageTemplate from '../pageTemplate';
 export default function MainPage() {
   return (
     <PageTemplate>
-      <StatusContainer></StatusContainer>
+      {/* <StatusContainer></StatusContainer> */}
       <Character></Character>
       <ActionButtons></ActionButtons>
     </PageTemplate>
