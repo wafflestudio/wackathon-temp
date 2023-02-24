@@ -16,7 +16,7 @@ class ScheduledTask(private val waffleRepository: WaffleRepository) {
             waffle.status.hungry -= 1
             waffle.status.thirsty -= 2
             waffle.status.cleanliness -= 0.5
-            waffle.status.sickness -= 0.1
+            waffle.status.health -= 0.1
             if (waffle.status.hungry < 0) {
                 waffle.status.hungry = 0.0
             }
@@ -26,8 +26,8 @@ class ScheduledTask(private val waffleRepository: WaffleRepository) {
             if (waffle.status.cleanliness < 0) {
                 waffle.status.cleanliness = 0.0
             }
-            if (waffle.status.sickness < 0) {
-                waffle.status.sickness = 0.0
+            if (waffle.status.health < 0) {
+                waffle.status.health = 0.0
             }
         }
     }

@@ -19,12 +19,17 @@ class ActionService(
     private val userActionRepository: UserActionRepository
 ) {
 
-    fun feed(userId: Long, waffleId: Long) {
+    fun act(userId: Long, waffleId: Long, type: ActionType) {
         val user = userRepository.findByIdOrNull(userId) ?: throw Exception404("404")
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
-        val action = Action(type = ActionType.FEED)
+        val action = Action(type = type)
         user.score += action.type.score
-        waffle.status.hungry = 100.0
+        when (type) {
+            ActionType.FEED -> waffle.status.hungry = 100.0
+            ActionType.WATER -> waffle.status.thirsty = 100.0
+            ActionType.BATHE -> waffle.status.cleanliness = 100.0
+            ActionType.CURE -> waffle.status.health = 100.0
+        }
         val userAction = UserAction.create(user, action, waffle)
         userActionRepository.save(userAction)
     }

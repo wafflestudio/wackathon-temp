@@ -20,5 +20,5 @@ class WaffleStatus(
     var hungry: Double = 100.0,
     var thirsty: Double = 100.0,
     var cleanliness: Double = 100.0,
-    var sickness: Double = 100.0
+    var health: Double = 100.0
 )

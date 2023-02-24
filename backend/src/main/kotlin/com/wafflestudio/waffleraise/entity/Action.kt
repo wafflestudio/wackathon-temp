@@ -12,5 +12,5 @@ data class Action(
 )
 
 enum class ActionType(val score: Int) {
-    FEED(2), WATERING(1), BATHE(4), CURE(20)
+    FEED(2), WATER(1), BATHE(4), CURE(20)
 }
