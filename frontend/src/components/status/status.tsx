@@ -7,13 +7,13 @@ type ItemType = {
 };
 
 export default function Status({ item }: ItemType) {
-  const dynamicLeft = 80;
+  const [position, setPosition] = useState<number>(0);
 
   return (
     <div className={styles.container}>
       {/* <div className={styles.name}>{item.name}</div> */}
       <div className={styles.total}></div>
-      <div className={styles.current} style={{ left: `${dynamicLeft}px` }}>
+      <div className={styles.current} style={{ left: `${position}px` }}>
         {item.name}
       </div>
     </div>
