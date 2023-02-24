@@ -24,7 +24,7 @@ export default function ActionButton({ name }: ActionButtonType) {
     (async function () {
       doPoll();
     })();
-  }, [doPoll]);
+  }, []);
 
   const action = () => {
     doAction(name, Number(userId), 1);
