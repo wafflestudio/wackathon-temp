@@ -20,5 +20,5 @@ data class User(
     @JoinColumn(name = "waffle_id")
     val waffle: Waffle,
     @CreatedDate
-    val lastOnline: LocalDateTime? = null
+    var lastOnline: LocalDateTime? = null
 )

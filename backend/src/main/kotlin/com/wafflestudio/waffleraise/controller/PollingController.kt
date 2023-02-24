@@ -12,7 +12,7 @@ class PollingController(
     private val pollingService: PollingService
 ) {
 
-    @PostMapping("/polling")
+    @PostMapping("/poll")
     fun poll(@RequestBody pollingRequest: PollingRequest): PollingDto {
         return pollingService.poll(pollingRequest.userId, pollingRequest.waffleId)
     }

@@ -29,8 +29,8 @@ class PollingService(
                 LocalDateTime.now(),
                 waffleId
             )
+        user.lastOnline = LocalDateTime.now()
         val userActionsDto = userActions.map { UserActionDto.of(it) }
-
         return PollingDto(WaffleDto.of(waffle), userActionsDto)
     }
 }
