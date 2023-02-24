@@ -27,6 +27,36 @@ const initialHistory: HistoryType[] = [
     time: '2022-02-02',
     action: '밥주기',
   },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '밥주기',
+  },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '밥주기',
+  },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '밥주기',
+  },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '밥주기',
+  },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '밥주기',
+  },
+  {
+    userName: '광휘',
+    time: '2022-02-02',
+    action: '똥주기',
+  },
 ];
 
 export default function HistoryPage() {

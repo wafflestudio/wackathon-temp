@@ -20,8 +20,8 @@ export default function HistoryModal({ list, closeModal }: HistoryModalType) {
         <div className={styles.title}>History</div>
         <div className={styles.historyContainer}>
           {list &&
-            list.map((item) => {
-              return <History item={item}></History>;
+            list.map((item, idx) => {
+              return <History key={idx} item={item}></History>;
             })}
         </div>
       </div>
