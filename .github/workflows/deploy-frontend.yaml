@@ -13,6 +13,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ap-northeast-2
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      S3_WEB_BUCKET: ${{ secrets.S3_WEB_BUCKET }}
     defaults:
       run:
         working-directory: frontend
@@ -37,8 +39,8 @@ jobs:
         run: |
           aws s3 cp \
             --recursive \
-            build s3://${{ secrets.S3_BUCKET }}
+            build s3://$S3_WEB_BUCKET
       - name: Invalidate cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths / /index.html
+            --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths / /index.html
