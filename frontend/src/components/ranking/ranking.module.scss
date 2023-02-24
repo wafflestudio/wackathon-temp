@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.name {
+  position: absolute;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+$contribute-width: 10px;
+
+.contribute {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: $contribute-width;
+  height: 24px;
+  background: #d9d9d9;
+  border-radius: 10px;
+}

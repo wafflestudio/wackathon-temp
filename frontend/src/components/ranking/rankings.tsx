@@ -12,6 +12,8 @@ const initialOwners: RankingType[] = [
     userName: '아빠',
     contribute: 90,
   },
+  { userName: 'papa', contribute: 10 },
+  { userName: 'akak', contribute: 10 },
 ];
 
 export default function Rankings() {
@@ -19,10 +21,12 @@ export default function Rankings() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Contribute</div>
-      {owners.map((item) => {
-        return <Ranking key={item.userName} detail={item}></Ranking>;
-      })}
+      <div className={styles.title}>Ranking</div>
+      <div className={styles.rankingContainer}>
+        {owners.map((item) => {
+          return <Ranking key={item.userName} detail={item}></Ranking>;
+        })}
+      </div>
     </div>
   );
 }

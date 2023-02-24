@@ -1,5 +1,14 @@
 .container {
   padding: 10%;
+  padding-bottom: 0;
+  //   max-height: 100px;
+}
+
+.rankingContainer {
+  max-height: 200px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 4%;
 }
 
 .title {
@@ -10,4 +19,5 @@
   line-height: 39px;
 
   color: #000000;
+  margin-bottom: 1px;
 }
