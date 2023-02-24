@@ -1,6 +1,9 @@
 package com.wafflestudio.waffleraise.service
 
+import com.wafflestudio.waffleraise.controller.response.RankingDto
 import com.wafflestudio.waffleraise.controller.response.UserActionDto
+import com.wafflestudio.waffleraise.controller.response.UserDto
+import com.wafflestudio.waffleraise.controller.response.WaffleDto
 import com.wafflestudio.waffleraise.entity.Action
 import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
@@ -38,5 +41,20 @@ class WaffleService(
     fun getHistories(waffleId: Long): List<UserActionDto> {
         val histories = userActionRepository.findAllByWaffleIdOrderByCreatedAtDesc(waffleId)
         return histories.map { UserActionDto.of(it) }
+    }
+
+    fun getRanking(waffleId: Long): RankingDto {
+        val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
+        val users = userRepository.findAllByWaffleId(waffleId)
+        var total = 0.0
+        for (user in users) {
+            total += user.score
+        }
+        val userDtos = mutableListOf<UserDto>()
+        for (user in users) {
+            userDtos.add(UserDto(user.username, user.score / total))
+        }
+        userDtos.sortByDescending { it.contribution }
+        return RankingDto(WaffleDto.of(waffle), userDtos)
     }
 }

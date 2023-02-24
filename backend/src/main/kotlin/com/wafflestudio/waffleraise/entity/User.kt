@@ -17,6 +17,7 @@ data class User(
     @OneToMany(mappedBy = "user")
     val userActions: MutableList<UserAction> = mutableListOf(),
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "waffle_id")
     val waffle: Waffle,
     @CreatedDate
     val lastOnline: LocalDateTime? = null
