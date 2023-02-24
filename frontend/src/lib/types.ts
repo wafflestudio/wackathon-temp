@@ -22,12 +22,12 @@ export type InfoType = {
 };
 
 export type RankingType = {
-  userName: string;
+  username: string;
   contribution: number;
 };
 
 export type HistoryType = {
-  userName: string;
+  username: string;
   action: string;
   time: string;
 };

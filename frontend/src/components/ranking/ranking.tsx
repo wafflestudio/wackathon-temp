@@ -7,15 +7,14 @@ type RankingComponentType = {
 };
 
 export default function Ranking({ detail }: RankingComponentType) {
+  console.log(detail);
   return (
     <div className={styles.container}>
-      <div className={styles.name}>{detail.userName}</div>
+      <div className={styles.name}>{detail.username}</div>
       <div
         className={styles.contribute}
-        style={{ width: `${detail.contribution * 2}px` }}
-      >
-        {detail.contribution}
-      </div>
+        style={{ width: `${detail.contribution * 100}%` }}
+      ></div>
     </div>
   );
 }

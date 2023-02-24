@@ -9,7 +9,7 @@ type HistoryComponentType = {
 };
 
 export default function History({ item }: HistoryComponentType) {
-  const color = getUsernameColor(item.userName);
+  const color = getUsernameColor(item.username);
 
   //   const date = dayjs(timestamp).format('YYYY-MM-DD');
 
@@ -21,7 +21,7 @@ export default function History({ item }: HistoryComponentType) {
         <div className={styles.time}>{item.time}</div>
       </div>
       <div className={styles.userName} style={{ color: color }}>
-        {item.userName}
+        {item.username}
       </div>
     </div>
   );

@@ -5,25 +5,30 @@ import { RankingType } from '../../lib/types';
 
 const initialOwners: RankingType[] = [
   {
-    userName: '엄마',
+    username: '엄마',
     contribution: 0,
   },
   {
-    userName: '아빠',
+    username: '아빠',
     contribution: 0,
   },
 ];
 
-export default function Rankings() {
-  const [owners, setOwners] = useState<RankingType[]>(initialOwners);
+type RankingComponentType = {
+  ranking: RankingType[] | undefined;
+};
+
+export default function Rankings({ ranking }: RankingComponentType) {
+  // const [owners, setOwners] = useState<RankingType[]>(initialOwners);
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>Ranking</div>
       <div className={styles.rankingContainer}>
-        {owners.map((item) => {
-          return <Ranking key={item.userName} detail={item}></Ranking>;
-        })}
+        {ranking &&
+          ranking.map((item) => {
+            return <Ranking key={item.username} detail={item}></Ranking>;
+          })}
       </div>
     </div>
   );

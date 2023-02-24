@@ -9,54 +9,14 @@ import { apiGetHistory, apiGetRanking } from '../../lib/api';
 
 const initialHistory: HistoryType[] = [
   {
-    userName: '채원',
+    username: '채원',
     time: '2022-02-02',
     action: '밥주기',
   },
   {
-    userName: '동현',
+    username: '동현',
     time: '2022-02-02',
     action: '씻기기',
-  },
-  {
-    userName: '준형',
-    time: '2022-02-02',
-    action: '똥치우기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '밥주기',
-  },
-  {
-    userName: '광휘',
-    time: '2022-02-02',
-    action: '똥주기',
   },
 ];
 
@@ -69,7 +29,7 @@ export default function HistoryPage() {
   useEffect(() => {
     (async () => {
       const rankingRes = await apiGetRanking(1);
-      setRanking(rankingRes.data);
+      setRanking(rankingRes.data.users);
       const historyRes = await apiGetHistory(1);
       console.log(rankingRes);
     })();
@@ -86,7 +46,7 @@ export default function HistoryPage() {
   return (
     <PageTemplate>
       <Character></Character>
-      <Rankings></Rankings>
+      <Rankings ranking={ranking}></Rankings>
       <HistoryButton openModal={openModal}></HistoryButton>
       {modalIsOpen && <HistoryModal list={history} closeModal={closeModal} />}
     </PageTemplate>
