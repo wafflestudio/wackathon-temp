@@ -9,6 +9,10 @@
       {
           "ContainerPort": 8080,
           "HostPort": 80
+      },
+      {
+          "ContainerPort": 8080,
+          "HostPort": 443
       }
     ]
   }
