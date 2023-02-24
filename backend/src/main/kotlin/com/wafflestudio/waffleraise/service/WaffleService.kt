@@ -7,6 +7,7 @@ import com.wafflestudio.waffleraise.controller.response.WaffleDto
 import com.wafflestudio.waffleraise.entity.Action
 import com.wafflestudio.waffleraise.entity.ActionType
 import com.wafflestudio.waffleraise.entity.UserAction
+import com.wafflestudio.waffleraise.exception.Exception403
 import com.wafflestudio.waffleraise.exception.Exception404
 import com.wafflestudio.waffleraise.repository.UserActionRepository
 import com.wafflestudio.waffleraise.repository.UserRepository
@@ -28,11 +29,35 @@ class WaffleService(
         val waffle = waffleRepository.findByIdOrNull(waffleId) ?: throw Exception404("404")
         val action = Action(type = type)
         user.score += action.type.score
+        waffle.level += action.type.score
         when (type) {
-            ActionType.FEED -> waffle.status.hungry = 100.0
-            ActionType.WATER -> waffle.status.thirsty = 100.0
-            ActionType.BATHE -> waffle.status.cleanliness = 100.0
-            ActionType.CURE -> waffle.status.health = 100.0
+            ActionType.FEED -> {
+                if (waffle.status.hungry > 30) {
+                    throw Exception403("배불러")
+                }
+                waffle.status.hungry = 100.0
+            }
+
+            ActionType.WATER -> {
+                if (waffle.status.thirsty > 30) {
+                    throw Exception403("목 안말라")
+                }
+                waffle.status.thirsty = 100.0
+            }
+
+            ActionType.BATHE -> {
+                if (waffle.status.cleanliness > 30) {
+                    throw Exception403("아직 뽀송뽀송해")
+                }
+                waffle.status.cleanliness = 100.0
+            }
+
+            ActionType.CURE -> {
+                if (waffle.status.health > 30) {
+                    throw Exception403("이미 건강해")
+                }
+                waffle.status.health = 100.0
+            }
         }
         val userAction = UserAction.create(user, action, waffle)
         userActionRepository.save(userAction)
