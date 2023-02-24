@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/main' element={<MainPage />} />
-        <Route path='/history' element={<HistoryPage />}></Route>
+        <Route path='/main/:userId' element={<MainPage />} />
+        <Route path='/history/:userId' element={<HistoryPage />}></Route>
       </Routes>
       <ToastContainer />
     </BrowserRouter>

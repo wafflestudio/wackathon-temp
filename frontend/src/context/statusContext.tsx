@@ -15,10 +15,10 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
 
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
-    const res = await apiPoll(1);
-    console.log(res);
+    // const res = await apiPoll(1);
+    // console.log(res);
     // console.log('hi');
-  }, 100000);
+  }, 10000);
 
   //action
   const doAction = async (
