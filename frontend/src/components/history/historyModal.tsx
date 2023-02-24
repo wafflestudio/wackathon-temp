@@ -12,8 +12,8 @@ type HistoryModalType = {
 
 export default function HistoryModal({ list, closeModal }: HistoryModalType) {
   return (
-    <div className={styles['modal-overlay']}>
-      <div className={styles.modal}>
+    <div className={styles['modal-overlay']} onClick={closeModal}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.close}>
           <FontAwesomeIcon icon={faX} onClick={closeModal} />
         </div>

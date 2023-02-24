@@ -1,5 +1,7 @@
+$current-status: 0%;
+
 .button {
   width: 60px;
   height: 60px;
-  background: #d9d9d9;
+  background: linear-gradient(to top, gray $current-status, transparent 50%);
 }
