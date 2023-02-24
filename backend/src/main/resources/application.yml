@@ -20,6 +20,6 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:mysql://${RDS_HOSTNAME:NONE}:3306/waffle_raise
+    username: ${RDS_USERNAME:NONE}
+    password: ${RDS_PASSWORD:NONE}
