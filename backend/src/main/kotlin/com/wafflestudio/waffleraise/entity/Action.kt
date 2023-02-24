@@ -1,6 +1,6 @@
 package com.wafflestudio.waffleraise.entity
 
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 data class Action(

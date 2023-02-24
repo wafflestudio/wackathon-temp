@@ -1,6 +1,6 @@
 package com.wafflestudio.waffleraise.entity
 
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 data class Waffle(
@@ -17,8 +17,8 @@ data class Waffle(
 
 @Embeddable
 class WaffleStatus(
-    var hungry: Double = 50.0,
-    var thirsty: Double = 50.0,
-    var cleanliness: Double = 50.0,
-    var sickness: Double = 50.0
+    var hungry: Double = 100.0,
+    var thirsty: Double = 100.0,
+    var cleanliness: Double = 100.0,
+    var sickness: Double = 100.0
 )
