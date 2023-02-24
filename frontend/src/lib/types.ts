@@ -13,3 +13,21 @@ export type HistoryType = {
   action: string;
   time: string;
 };
+
+export type WaffleType = {
+  id: number;
+  level: number;
+  name: string;
+  cleanliness: number;
+  hungry: number;
+  sickness: number;
+  thirsty: number;
+};
+
+export type UserType = {
+  id: number;
+  last_online: string;
+  score: number;
+  username: string;
+  waffle_id: number;
+};

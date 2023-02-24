@@ -7,8 +7,8 @@ const activeButtons = ['feed', 'water', 'clean', 'medicine'];
 export default function ActionButtons() {
   return (
     <div className={styles.container}>
-      {activeButtons.map((item) => {
-        return <ActionButton key={item} name={item}></ActionButton>;
+      {activeButtons.map((item, idx) => {
+        return <ActionButton key={idx} name={item}></ActionButton>;
       })}
     </div>
   );
