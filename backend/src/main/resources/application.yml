@@ -1,16 +1,18 @@
 spring:
-  profiles:
-    active: local
-  datasource:
-    url: jdbc:mysql://localhost:3306/waffle_raise
-    username: root
-    password: password
   jpa:
     hibernate:
       ddl-auto: update
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+---
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/waffle_raise
+    username: root
+    password: password
 ---
 spring:
   profiles:
