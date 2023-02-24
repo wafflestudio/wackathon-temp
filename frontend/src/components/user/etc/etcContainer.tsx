@@ -8,7 +8,7 @@ export default function EtcContainer() {
     <div className={styles.container}>
       <Money></Money>
       <ScreenShot></ScreenShot>
-      <Level></Level>
+      {/* <Level></Level> */}
     </div>
   );
 }
