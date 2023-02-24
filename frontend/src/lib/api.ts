@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect, useRef } from 'react';
 
 export const apiLogin = (id: string, password: string) => {
   return id;
@@ -27,3 +28,21 @@ export function getUsernameColor(username: string) {
 
   return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 }
+
+export const useInterval = (callback: () => void, delay: number) => {
+  const savedCallback = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    const executeCallback = () => {
+      savedCallback.current();
+    };
+
+    const timerId = setInterval(executeCallback, delay);
+
+    return () => clearInterval(timerId);
+  }, []);
+};
