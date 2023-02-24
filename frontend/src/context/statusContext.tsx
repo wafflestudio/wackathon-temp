@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { StatusType } from '../lib/types';
-import { apiAction, apiGetUserInfo, useInterval } from '../lib/api';
+import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
 
 type StatusContextType = {
   status: StatusType[] | undefined;
@@ -13,10 +13,12 @@ const StatusContext = createContext<StatusContextType>({} as StatusContextType);
 export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<StatusType[] | undefined>();
 
-  useInterval(() => {
+  useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
-    console.log('hi');
-  }, 1000);
+    const res = await apiPoll(1);
+    console.log(res);
+    // console.log('hi');
+  }, 100000);
 
   //action
   const doAction = async (
