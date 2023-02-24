@@ -1,19 +1,16 @@
 package com.wafflestudio.waffleraise.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
 data class Action(
     @Id
-    val id: Long,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0L,
     @Enumerated(EnumType.STRING)
     val type: ActionType,
-    val score: Int
 )
 
-enum class ActionType {
-    EAT, DRINK
+enum class ActionType(val score: Int) {
+    FEED(2), WATERING(1), BATHE(4), CURE(20)
 }

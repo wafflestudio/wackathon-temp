@@ -1,21 +1,36 @@
 package com.wafflestudio.waffleraise.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.FetchType
-import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
+import com.wafflestudio.waffleraise.repository.UserActionRepository
+import jakarta.persistence.*
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 data class UserAction(
     @Id
-    val id: Long,
-    val createdAt: LocalDateTime,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0L,
+    @CreatedDate
+    val createdAt: LocalDateTime? = null,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     val user: User,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "action_id")
-    val action: Action
-)
+    val action: Action,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "waffle_id")
+    val waffle: Waffle
+) {
+    companion object {
+        fun create(user: User, action: Action, waffle: Waffle): UserAction {
+            return UserAction(
+                user = user,
+                action = action,
+                waffle = waffle
+            )
+        }
+    }
+}

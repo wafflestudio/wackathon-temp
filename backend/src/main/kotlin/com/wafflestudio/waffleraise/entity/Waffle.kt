@@ -5,15 +5,20 @@ import jakarta.persistence.*
 @Entity
 data class Waffle(
     @Id
-    val id: Long,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0L,
     val name: String,
-    val age: Int,
+    val level: Int,
     @OneToMany(mappedBy = "waffle")
     val owners: MutableList<User> = mutableListOf(),
-    @Enumerated(EnumType.STRING)
+    @Embedded
     val status: WaffleStatus
 )
 
-enum class WaffleStatus {
-    HUNGRY, THIRSTY
-}
+@Embeddable
+class WaffleStatus(
+    var hungry: Double = 50.0,
+    var thirsty: Double = 50.0,
+    var cleanliness: Double = 50.0,
+    var sickness: Double = 50.0
+)

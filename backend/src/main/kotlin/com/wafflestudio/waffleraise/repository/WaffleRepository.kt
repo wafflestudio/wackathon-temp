@@ -1,8 +1,7 @@
 package com.wafflestudio.waffleraise.repository
 
-import com.wafflestudio.waffleraise.entity.Action
+import com.wafflestudio.waffleraise.entity.Waffle
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface ActionRepository : JpaRepository<Action, Long> {
-
+interface WaffleRepository : JpaRepository<Waffle, Long> {
 }
