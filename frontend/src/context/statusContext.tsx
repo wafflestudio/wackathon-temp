@@ -1,11 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { InfoType, UserType } from '../lib/types';
-import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
-import { useParams } from 'react-router-dom';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { InfoType, UserType } from "../lib/types";
+import { apiAction, apiGetUserInfo, apiPoll, useInterval } from "../lib/api";
+import { useParams } from "react-router-dom";
 
 type StatusContextType = {
   status: InfoType | undefined;
   getUserInfo: (id: number) => {};
+  doPoll: () => {};
   doAction: (actionType: string, userId: number, waffleId: number) => {};
   user: number;
 };
@@ -21,11 +22,15 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
 
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
+    await doPoll();
+  }, 3000);
+
+  const doPoll = async () => {
     const res = await apiPoll(1);
     console.log(res);
     setStatus(res.data);
     setUser(res.data.lastUserAction.userId);
-  }, 10000);
+  };
 
   //action
   const doAction = async (
@@ -48,6 +53,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
       value={{
         status,
         getUserInfo,
+        doPoll,
         doAction,
         user,
       }}
