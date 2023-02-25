@@ -15,7 +15,7 @@ type HistoryComponentType = {
 export default function History({ item }: HistoryComponentType) {
   const color = getUsernameColor(item.username);
 
-  const date = dayjs(item.createdAt).format('YYYY-MM-DD HH:mm ');
+  const date = dayjs(item.createdAt).add(9, 'hour').format('YYYY-MM-DD HH:mm ');
 
   let newAction = '';
   let icon = '';
