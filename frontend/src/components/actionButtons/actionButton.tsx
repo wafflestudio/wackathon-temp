@@ -120,7 +120,7 @@ export default function ActionButton({ name }: ActionButtonType) {
           borderRadius: '10px',
         }}
       ></img>
-      {newAction}
+      <div className={styles.text}>{newAction}</div>
       <ToastContainer></ToastContainer>
     </div>
   );
