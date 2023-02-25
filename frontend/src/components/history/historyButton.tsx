@@ -13,7 +13,9 @@ export default function HistoryButton({
 }: HistoryButtonComponentType) {
   return (
     <div className={styles.container}>
-      <div className={styles.text}>History</div>
+      <div className={styles.text} onClick={openModal}>
+        History
+      </div>
       <img src={historyBox} onClick={openModal}></img>
       {/* <button className={styles.button} onClick={openModal}>
         History
