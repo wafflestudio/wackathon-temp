@@ -34,8 +34,6 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
 
   const previousUserRef = useRef<InfoType | undefined>();
 
-  const { userId } = useParams();
-
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
     if (pollRunning) {

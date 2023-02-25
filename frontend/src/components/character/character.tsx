@@ -10,6 +10,7 @@ import waffleHungry from '../../resources/waffle_hungry.gif';
 import waffleSick from '../../resources/waffle_sick.gif';
 import waffleBasicB from '../../resources/waffle_basic_back.gif';
 import waffleBack from '../../resources/waffle_basic_turningback.png';
+import waffleBackWash from '../../resources/wash_back.gif';
 import dayjs from 'dayjs';
 
 export default function Character() {
@@ -43,13 +44,24 @@ export default function Character() {
         }
       } else if (user !== Number(userId)) {
         //가장 최근의 유저 아이디와 현재 접속한 사람이 다를 경우
+        console.log(previousUserRef.current);
         if (previousUserRef.current?.lastUserAction.userId !== user) {
-          setCharacterImg(waffleFeedB);
-          setPollRunning(false);
-          setTimeout(() => {
-            setPollRunning(true);
-            setCharacterImg(waffleBasicB);
-          }, 5000);
+          console.log(previousUserRef.current?.lastUserAction);
+          if (previousUserRef.current?.lastUserAction.action === 'BATHE') {
+            setCharacterImg(waffleBackWash);
+            setPollRunning(false);
+            setTimeout(() => {
+              setCharacterImg(waffleBasicB);
+              setPollRunning(true);
+            }, 5000);
+          } else {
+            setCharacterImg(waffleFeedB);
+            setPollRunning(false);
+            setTimeout(() => {
+              setCharacterImg(waffleBasicB);
+              setPollRunning(true);
+            }, 5000);
+          }
         } else setCharacterImg(waffleBasicB);
       }
     }
