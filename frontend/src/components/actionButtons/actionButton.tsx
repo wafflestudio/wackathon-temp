@@ -67,21 +67,14 @@ export default function ActionButton({ name }: ActionButtonType) {
   const previousCharacterImg = useRef(characterImg);
 
   const action = () => {
-    try {
-      doAction(name, Number(userId), 1);
-      previousCharacterImg.current = characterImg;
-      setCharacterImg(actionIcon);
-      setPollRunning(false);
-      setTimeout(() => {
-        setPollRunning(true);
-        setCharacterImg(previousCharacterImg.current);
-      }, 5000);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-      }
-      console.log(error);
-    }
+    doAction(name, Number(userId), 1);
+    previousCharacterImg.current = characterImg;
+    setCharacterImg(actionIcon);
+    setPollRunning(false);
+    setTimeout(() => {
+      setPollRunning(true);
+      setCharacterImg(previousCharacterImg.current);
+    }, 5000);
   };
 
   const statusNumber = status?.waffle.status[newName] ?? 0;

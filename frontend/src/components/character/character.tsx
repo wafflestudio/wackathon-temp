@@ -14,7 +14,8 @@ import dayjs from 'dayjs';
 export default function Character() {
   //여기서 useEffect로 character의 state 갱신해주는게 좋을듯?
   const { user } = useStatusContext();
-  const { previousUserRef, status, detailStatus } = useStatusContext();
+  const { previousUserRef, status, detailStatus, setPollRunning } =
+    useStatusContext();
   const { userId } = useParams();
 
   const { characterImg, setCharacterImg } = useStatusContext();
@@ -47,7 +48,9 @@ export default function Character() {
       //가장 최근의 유저 아이디와 현재 접속한 사람이 다를 경우
       if (previousUserRef.current?.lastUserAction.userId !== user) {
         setCharacterImg(waffleFeedB);
+        setPollRunning(false);
         setTimeout(() => {
+          setPollRunning(true);
           setCharacterImg(waffleBasicB);
         }, 5000);
       } else setCharacterImg(waffleBasicB);

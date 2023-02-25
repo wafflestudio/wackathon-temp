@@ -41,7 +41,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     if (pollRunning) {
       await doPoll();
     }
-  }, 3000);
+  }, 1000);
 
   useEffect(() => {
     previousUserRef.current = status;
