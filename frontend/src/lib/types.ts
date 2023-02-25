@@ -2,6 +2,7 @@ export type lastUserAction = {
   action: string;
   createdAt: string;
   username: string;
+  userId: number;
 };
 
 export type StatusType = {

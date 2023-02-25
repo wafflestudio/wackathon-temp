@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { InfoType, StatusType, UserType } from '../lib/types';
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
 import { useParams } from 'react-router-dom';
@@ -13,6 +19,7 @@ type StatusContextType = {
   characterImg: string;
   setCharacterImg: React.Dispatch<React.SetStateAction<string>>;
   detailStatus: StatusType | undefined;
+  previousUserRef: React.MutableRefObject<InfoType | undefined>;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
@@ -24,6 +31,8 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
 
   const [characterImg, setCharacterImg] = useState(waffleBasic);
 
+  const previousUserRef = useRef<InfoType | undefined>();
+
   const { userId } = useParams();
 
   useInterval(async () => {
@@ -31,12 +40,16 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     await doPoll();
   }, 5000);
 
+  useEffect(() => {
+    previousUserRef.current = status;
+  });
+
   const doPoll = async () => {
     const res = await apiPoll(1);
     console.log(res);
     setStatus(res.data);
     setDetailStatus(res.data.waffle.status);
-    setUser(res.data.lastUserAction.userId);
+    setUser(res.data.lastUserAction.userId); //가장 최근 행동의 유저아이디
   };
 
   //action
@@ -66,6 +79,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
         doAction,
         user,
         detailStatus,
+        previousUserRef,
       }}
     >
       {children}
