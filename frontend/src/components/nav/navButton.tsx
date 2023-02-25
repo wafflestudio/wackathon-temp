@@ -28,25 +28,29 @@ export default function NavButton({ name }: navButtonType) {
   const handleNav = () => {
     // e.preventDefault();
     if (name === 'decoration' || name === 'community') {
-      toast('아직 개발중이야!');
+      toast('사용을 위해서는 국민93770200501153 만원 후원해주세요.');
     } else {
       navigate(`/${name}/${userId}`);
     }
   };
-
+  let menu = '';
   let icon = '';
   switch (name) {
     case 'main':
       icon = homeIcon;
+      menu = '홈';
       break;
     case 'history':
       icon = historyIcon;
+      menu = '기여도';
       break;
     case 'decoration':
       icon = decorationIcon;
+      menu = '꾸미기';
       break;
     case 'community':
       icon = communityIcon;
+      menu = '커뮤니티';
       break;
   }
 
@@ -61,6 +65,7 @@ export default function NavButton({ name }: navButtonType) {
         onClick={handleNav}
         style={style}
       ></img>
+      {menu}
     </div>
   );
 }
