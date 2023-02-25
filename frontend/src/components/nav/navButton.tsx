@@ -27,11 +27,11 @@ export default function NavButton({ name }: navButtonType) {
 
   const handleNav = () => {
     // e.preventDefault();
-    if (name === 'decoration' || name === 'community') {
-      toast.warn('국민93770200501153 10,000 송금 요함');
-    } else {
-      navigate(`/${name}/${userId}`);
-    }
+    // if (name === 'decoration' || name === 'community') {
+    //   // toast.warn('국민93770200501153 10,000 송금 요함');
+    // } else {
+    navigate(`/${name}/${userId}`);
+    // }
   };
   let menu = '';
   let icon = '';
