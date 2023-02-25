@@ -9,7 +9,7 @@ import pillIcon from '../../resources/pill.svg';
 import feedActionF from '../../resources/waffle_feed_f.gif';
 import waterActionF from '../../resources/waffle_water_f.gif';
 import washActionF from '../../resources/waffle_wash_f.gif';
-import cureActionF from '../../resources/waffle_cure_f.gif';
+import cureActionF from '../../resources/cure_5s.gif';
 import waffleBasic from '../../resources/waffle_basic.gif';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
