@@ -89,7 +89,8 @@ export default function ActionButton({ name }: ActionButtonType) {
 
   const action = () => {
     if (statusNumber >= 30) {
-      toast.warn(message);
+      toast.warn(message, {});
+      return;
     }
     doAction(name, Number(userId), 1);
     previousCharacterImg.current = characterImg;
