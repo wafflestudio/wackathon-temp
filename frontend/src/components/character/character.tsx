@@ -27,16 +27,16 @@ export default function Character() {
 
     if (user === Number(userId)) {
       if (detailStatus) {
-        if (detailStatus?.health <= 30) {
+        if (detailStatus?.health < 30) {
           setCharacterImg(waffleSick);
           console.log('sick');
-        } else if (detailStatus?.cleanliness <= 30) {
+        } else if (detailStatus?.cleanliness < 30) {
           console.log('dirty');
           setCharacterImg(waffleDirty);
-        } else if (detailStatus?.hungry <= 30) {
+        } else if (detailStatus?.hungry < 30) {
           console.log('hungry');
           setCharacterImg(waffleHungry);
-        } else if (detailStatus?.thirsty <= 30) {
+        } else if (detailStatus?.thirsty < 30) {
           console.log('thirsty');
           setCharacterImg(waffleDry);
         } else {
