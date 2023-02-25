@@ -19,7 +19,11 @@ export default function Level() {
   }
 
   if (status) {
-    levelStatus = status.waffle.level - Math.floor(status.waffle.level);
+    if (status.waffle.level >= 3) {
+      levelStatus = 1;
+    } else {
+      levelStatus = status.waffle.level - Math.floor(status.waffle.level);
+    }
   }
 
   return (
