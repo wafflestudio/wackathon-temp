@@ -77,13 +77,13 @@ export default function ActionButton({ name }: ActionButtonType) {
   let color = '';
   switch (true) {
     case statusNumber >= 70:
-      color = 'green';
+      color = '#7CFFA0';
       break;
     case statusNumber >= 30:
-      color = 'yellow';
+      color = '#FCFF7C';
       break;
     case statusNumber >= 0:
-      color = 'red';
+      color = '#FF7C93';
       break;
   }
 
@@ -114,7 +114,7 @@ export default function ActionButton({ name }: ActionButtonType) {
         style={{
           background: `linear-gradient(to top, ${color} ${
             statusNumber ? statusNumber : 0
-          }%, transparent 50%)`,
+          }%, transparent 10%)`,
           objectFit: 'cover',
           overflow: 'hidden',
           borderRadius: '10px',

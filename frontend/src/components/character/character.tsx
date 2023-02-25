@@ -9,6 +9,7 @@ import waffleFeedB from '../../resources/waffle_feed_b.gif';
 import waffleHungry from '../../resources/waffle_hungry.gif';
 import waffleSick from '../../resources/waffle_sick.gif';
 import waffleBasicB from '../../resources/waffle_basic_back.gif';
+import waffleBack from '../../resources/waffle_basic_turningback.png';
 import dayjs from 'dayjs';
 
 export default function Character() {
@@ -63,10 +64,14 @@ export default function Character() {
     user,
   ]);
 
+  const lookBack = () => {
+    setCharacterImg('');
+  };
+
   // icon = waffleHungry;
   return (
     <div className={styles.container}>
-      <img src={characterImg}></img>
+      <img src={characterImg} onClick={lookBack}></img>
     </div>
   );
 }

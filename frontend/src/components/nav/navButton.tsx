@@ -28,7 +28,7 @@ export default function NavButton({ name }: navButtonType) {
   const handleNav = () => {
     // e.preventDefault();
     if (name === 'decoration' || name === 'community') {
-      toast('사용을 위해서는 국민93770200501153 만원 후원해주세요.');
+      toast.warn('국민93770200501153 10,000 송금 요함');
     } else {
       navigate(`/${name}/${userId}`);
     }
