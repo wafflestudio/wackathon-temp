@@ -22,39 +22,36 @@ export default function Character() {
   const { characterImg, setCharacterImg } = useStatusContext();
 
   useEffect(() => {
-    let date = dayjs(status?.lastUserAction.createdAt);
-    let now = dayjs();
-    date = date.add(9, 'hour');
-    const secondDiff = now.diff(date, 'second');
-
-    if (user === Number(userId)) {
-      if (detailStatus) {
-        if (detailStatus?.health < 30) {
-          setCharacterImg(waffleSick);
-          console.log('sick');
-        } else if (detailStatus?.cleanliness < 30) {
-          console.log('dirty');
-          setCharacterImg(waffleDirty);
-        } else if (detailStatus?.hungry < 30) {
-          console.log('hungry');
-          setCharacterImg(waffleHungry);
-        } else if (detailStatus?.thirsty < 30) {
-          console.log('thirsty');
-          setCharacterImg(waffleDry);
-        } else {
-          setCharacterImg(waffleBasic);
+    if (user) {
+      if (user === Number(userId)) {
+        if (detailStatus) {
+          if (detailStatus?.health < 30) {
+            setCharacterImg(waffleSick);
+            console.log('sick');
+          } else if (detailStatus?.cleanliness < 30) {
+            console.log('dirty');
+            setCharacterImg(waffleDirty);
+          } else if (detailStatus?.hungry < 30) {
+            console.log('hungry');
+            setCharacterImg(waffleHungry);
+          } else if (detailStatus?.thirsty < 30) {
+            console.log('thirsty');
+            setCharacterImg(waffleDry);
+          } else {
+            setCharacterImg(waffleBasic);
+          }
         }
+      } else if (user !== Number(userId)) {
+        //가장 최근의 유저 아이디와 현재 접속한 사람이 다를 경우
+        if (previousUserRef.current?.lastUserAction.userId !== user) {
+          setCharacterImg(waffleFeedB);
+          setPollRunning(false);
+          setTimeout(() => {
+            setPollRunning(true);
+            setCharacterImg(waffleBasicB);
+          }, 5000);
+        } else setCharacterImg(waffleBasicB);
       }
-    } else if (user !== Number(userId)) {
-      //가장 최근의 유저 아이디와 현재 접속한 사람이 다를 경우
-      if (previousUserRef.current?.lastUserAction.userId !== user) {
-        setCharacterImg(waffleFeedB);
-        setPollRunning(false);
-        setTimeout(() => {
-          setPollRunning(true);
-          setCharacterImg(waffleBasicB);
-        }, 5000);
-      } else setCharacterImg(waffleBasicB);
     }
   }, [
     detailStatus?.cleanliness,
