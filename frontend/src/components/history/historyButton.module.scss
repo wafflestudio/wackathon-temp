@@ -25,3 +25,27 @@
 
   margin-bottom: 2%;
 }
+
+.text {
+  width: 310px;
+  height: 70px;
+  background: white;
+  border-radius: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #000000;
+
+  z-index: 1;
+  position: fixed;
+  left: 10%;
+  right: 0%;
+  top: 77.3%;
+  background-color: transparent;
+}

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styles from './historyButton.module.scss';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import historyBox from '../../resources/historyBox.svg';
 
 type HistoryButtonComponentType = {
-  openModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  openModal: () => void;
 };
 
 export default function HistoryButton({
@@ -12,9 +13,11 @@ export default function HistoryButton({
 }: HistoryButtonComponentType) {
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={openModal}>
+      <div className={styles.text}>History</div>
+      <img src={historyBox} onClick={openModal}></img>
+      {/* <button className={styles.button} onClick={openModal}>
         History
-      </button>
+      </button> */}
     </div>
   );
 }
