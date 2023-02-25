@@ -16,27 +16,36 @@ export default function Character() {
   const { userId } = useParams();
 
   const { characterImg, setCharacterImg } = useStatusContext();
-
-  console.log(status?.waffle.status.hungry + 'hungry');
-
-  let icon = '';
+  // let icon = waffleBasic;
   if (user === Number(userId)) {
-    //status에 따라 분기처리
-    //set
-    icon = characterImg;
-  } else {
-    icon = waffleDirty;
+    if (status?.waffle.status.health && status?.waffle.status.health <= 30) {
+      setCharacterImg(waffleSick);
+    } else if (
+      status?.waffle.status.cleanliness &&
+      status?.waffle.status.cleanliness <= 30
+    ) {
+      setCharacterImg(waffleDirty);
+    } else if (
+      status?.waffle.status.hungry &&
+      status?.waffle.status.hungry <= 30
+    ) {
+      setCharacterImg(waffleHungry);
+    } else if (
+      status?.waffle.status.thirsty &&
+      status?.waffle.status.thirsty <= 30
+    ) {
+      setCharacterImg(waffleDry);
+    } else {
+      setCharacterImg(waffleBasic);
+    }
+  } else if (user !== Number(userId)) {
+    //기본 뒷모습 여기 삽입.
+    // setCharacterImg(waffleBasic);
   }
-  //if userid !== user back으로 설정
-  //  if(status == hungry)
-  // icon = hungryIcon
-  //  if(status == thirsty)
-
-  //else if userid === user
-  // if status == hungry
+  // icon = waffleHungry;
   return (
     <div className={styles.container}>
-      <img src={icon}></img>
+      <img src={characterImg}></img>
     </div>
   );
 }

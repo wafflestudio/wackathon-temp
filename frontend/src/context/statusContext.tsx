@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { InfoType, UserType } from "../lib/types";
-import { apiAction, apiGetUserInfo, apiPoll, useInterval } from "../lib/api";
-import { useParams } from "react-router-dom";
-=======
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { InfoType, UserType } from '../lib/types';
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
 import { useParams } from 'react-router-dom';
 import waffleBasic from '../resources/waffle_basic.gif';
->>>>>>> 236448e (character icon logic action buttonㅇㅔ 추가)
 
 type StatusContextType = {
   status: InfoType | undefined;

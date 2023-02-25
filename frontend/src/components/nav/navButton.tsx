@@ -28,7 +28,7 @@ export default function NavButton({ name }: navButtonType) {
   const handleNav = () => {
     // e.preventDefault();
     if (name === 'decoration' || name === 'community') {
-      toast('Under development');
+      toast('아직 개발중이야!');
     } else {
       navigate(`/${name}/${userId}`);
     }

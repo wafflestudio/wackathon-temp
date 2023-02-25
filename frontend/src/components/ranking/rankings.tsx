@@ -26,8 +26,10 @@ export default function Rankings({ ranking }: RankingComponentType) {
       <div className={styles.title}>Ranking</div>
       <div className={styles.rankingContainer}>
         {ranking &&
-          ranking.map((item) => {
-            return <Ranking key={item.username} detail={item}></Ranking>;
+          ranking.map((item, idx) => {
+            return (
+              <Ranking key={item.username} detail={item} index={idx}></Ranking>
+            );
           })}
       </div>
     </div>

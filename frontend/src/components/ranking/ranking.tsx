@@ -4,6 +4,7 @@ import styles from './ranking.module.scss';
 import profile from '../../resources/profile.svg';
 
 type RankingComponentType = {
+  index: number;
   detail: RankingType;
 };
 
