@@ -6,6 +6,11 @@ import feedIcon from '../../resources/feed.svg';
 import milkIcon from '../../resources/milk.svg';
 import batheIcon from '../../resources/bathe.svg';
 import pillIcon from '../../resources/pill.svg';
+import feedActionF from '../../resources/waffle_feed_f.gif';
+import waterActionF from '../../resources/waffle_water_f.gif';
+import washActionF from '../../resources/waffle_wash_f.gif';
+import cureActionF from '../../resources/waffle_cure_f.gif';
+import waffleBasic from '../../resources/waffle_basic.gif';
 
 type ActionButtonType = {
   name: string;
@@ -27,9 +32,7 @@ export default function ActionButton({ name }: ActionButtonType) {
     })();
   }, []);
 
-  const action = () => {
-    doAction(name, Number(userId), 1);
-  };
+  let actionIcon = '';
   let newAction = '';
   let newName = '';
   let icon = '';
@@ -38,23 +41,36 @@ export default function ActionButton({ name }: ActionButtonType) {
       icon = feedIcon;
       newName = 'hungry';
       newAction = '밥 주기';
+      actionIcon = feedActionF;
       break;
     case 'WATER':
       icon = milkIcon;
       newName = 'thirsty';
       newAction = '우유 주기';
+      actionIcon = waterActionF;
       break;
     case 'BATHE':
       icon = batheIcon;
       newName = 'cleanliness';
       newAction = '씻기기';
+      actionIcon = washActionF;
       break;
     case 'CURE':
       icon = pillIcon;
       newName = 'health';
       newAction = '약 주기';
+      actionIcon = cureActionF;
       break;
   }
+
+  const action = () => {
+    doAction(name, Number(userId), 1);
+    setCharacterImg(actionIcon);
+    setTimeout(() => {
+      setCharacterImg(waffleBasic);
+    }, 5000);
+  };
+
   const statusNumber = status?.waffle.status[newName] ?? 0;
   let color = '';
   switch (true) {

@@ -28,7 +28,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
     await doPoll();
-  }, 3000);
+  }, 5000);
 
   const doPoll = async () => {
     const res = await apiPoll(1);

@@ -20,23 +20,25 @@ export default function Character() {
   if (user === Number(userId)) {
     if (status?.waffle.status.health && status?.waffle.status.health <= 30) {
       setCharacterImg(waffleSick);
+      console.log('sick');
     } else if (
       status?.waffle.status.cleanliness &&
       status?.waffle.status.cleanliness <= 30
     ) {
+      console.log('dirty');
       setCharacterImg(waffleDirty);
     } else if (
       status?.waffle.status.hungry &&
       status?.waffle.status.hungry <= 30
     ) {
+      console.log('hungry');
       setCharacterImg(waffleHungry);
     } else if (
       status?.waffle.status.thirsty &&
       status?.waffle.status.thirsty <= 30
     ) {
+      console.log('thirsty');
       setCharacterImg(waffleDry);
-    } else {
-      setCharacterImg(waffleBasic);
     }
   } else if (user !== Number(userId)) {
     //기본 뒷모습 여기 삽입.
