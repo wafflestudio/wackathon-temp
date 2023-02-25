@@ -20,6 +20,7 @@ type StatusContextType = {
   setCharacterImg: React.Dispatch<React.SetStateAction<string>>;
   detailStatus: StatusType | undefined;
   previousUserRef: React.MutableRefObject<InfoType | undefined>;
+  setPollRunning: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
@@ -28,7 +29,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<InfoType | undefined>();
   const [detailStatus, setDetailStatus] = useState<StatusType | undefined>();
   const [user, setUser] = useState(0);
-
+  const [pollRunning, setPollRunning] = useState<boolean>(true);
   const [characterImg, setCharacterImg] = useState(waffleBasic);
 
   const previousUserRef = useRef<InfoType | undefined>();
@@ -37,8 +38,10 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
 
   useInterval(async () => {
     //history 갱신도 여기서 해줘야 하나?
-    await doPoll();
-  }, 5000);
+    if (pollRunning) {
+      await doPoll();
+    }
+  }, 3000);
 
   useEffect(() => {
     previousUserRef.current = status;
@@ -80,6 +83,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
         user,
         detailStatus,
         previousUserRef,
+        setPollRunning,
       }}
     >
       {children}

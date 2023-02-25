@@ -20,7 +20,7 @@ export default function ActionButton({ name }: ActionButtonType) {
   const { userId } = useParams();
   // const location = useLocation();
   // const currentPath = location.pathname; 일단 안씀
-  const { characterImg, setCharacterImg } = useStatusContext();
+  const { characterImg, setCharacterImg, setPollRunning } = useStatusContext();
 
   const { status } = useStatusContext();
 
@@ -66,7 +66,9 @@ export default function ActionButton({ name }: ActionButtonType) {
   const action = () => {
     doAction(name, Number(userId), 1);
     setCharacterImg(actionIcon);
+    setPollRunning(false);
     setTimeout(() => {
+      setPollRunning(true);
       setCharacterImg(waffleBasic);
     }, 5000);
   };
