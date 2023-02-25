@@ -89,16 +89,19 @@ export default function ActionButton({ name }: ActionButtonType) {
 
   const action = () => {
     if (statusNumber >= 30) {
-      toast.warn(message, {});
+      toast.warn(message, {
+        pauseOnHover: false,
+        autoClose: 3000,
+      });
       return;
     }
     doAction(name, Number(userId), 1);
     previousCharacterImg.current = characterImg;
-    setCharacterImg(actionIcon);
     setPollRunning(false);
+    setCharacterImg(actionIcon);
     setTimeout(() => {
       setPollRunning(true);
-      setCharacterImg(previousCharacterImg.current);
+      setCharacterImg(waffleBasic);
     }, 5000);
   };
 
