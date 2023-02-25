@@ -65,7 +65,7 @@ export default function NavButton({ name }: navButtonType) {
         onClick={handleNav}
         style={style}
       ></img>
-      {menu}
+      <div className={styles.text}>{menu}</div>
     </div>
   );
 }

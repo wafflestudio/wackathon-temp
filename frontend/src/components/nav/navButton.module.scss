@@ -5,9 +5,23 @@
   margin: 0;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+
+  color: #000000;
 
   .img {
     width: 40px;
     height: 40px;
+  }
+
+  .text {
+    margin-top: 10px;
   }
 }
