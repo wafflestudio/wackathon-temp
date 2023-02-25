@@ -14,7 +14,6 @@ export default function PageTemplate({
       <UserContainer></UserContainer>
       <div>{children}</div>
       <Nav></Nav>
-      <div className={styles.marginBottom}></div>
     </div>
   );
 }
