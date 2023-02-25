@@ -12,6 +12,8 @@ import washActionF from '../../resources/waffle_wash_f.gif';
 import cureActionF from '../../resources/waffle_cure_f.gif';
 import waffleBasic from '../../resources/waffle_basic.gif';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type ActionButtonType = {
   name: string;
@@ -37,45 +39,39 @@ export default function ActionButton({ name }: ActionButtonType) {
   let newAction = '';
   let newName = '';
   let icon = '';
+  let message = '';
   switch (name) {
     case 'FEED':
       icon = feedIcon;
       newName = 'hungry';
       newAction = '밥 주기';
       actionIcon = feedActionF;
+      message = '배불러!';
       break;
     case 'WATER':
       icon = milkIcon;
       newName = 'thirsty';
       newAction = '우유 주기';
       actionIcon = waterActionF;
+      message = '목 안말라!';
       break;
     case 'BATHE':
       icon = batheIcon;
       newName = 'cleanliness';
       newAction = '씻기기';
       actionIcon = washActionF;
+      message = '아직 뽀송뽀송해!';
       break;
     case 'CURE':
       icon = pillIcon;
       newName = 'health';
       newAction = '약 주기';
       actionIcon = cureActionF;
+      message = '나 건강해!';
       break;
   }
 
   const previousCharacterImg = useRef(characterImg);
-
-  const action = () => {
-    doAction(name, Number(userId), 1);
-    previousCharacterImg.current = characterImg;
-    setCharacterImg(actionIcon);
-    setPollRunning(false);
-    setTimeout(() => {
-      setPollRunning(true);
-      setCharacterImg(previousCharacterImg.current);
-    }, 5000);
-  };
 
   const statusNumber = status?.waffle.status[newName] ?? 0;
   let color = '';
@@ -90,6 +86,20 @@ export default function ActionButton({ name }: ActionButtonType) {
       color = 'red';
       break;
   }
+
+  const action = () => {
+    if (statusNumber >= 30) {
+      toast.warn(message);
+    }
+    doAction(name, Number(userId), 1);
+    previousCharacterImg.current = characterImg;
+    setCharacterImg(actionIcon);
+    setPollRunning(false);
+    setTimeout(() => {
+      setPollRunning(true);
+      setCharacterImg(previousCharacterImg.current);
+    }, 5000);
+  };
 
   return (
     <div className={styles.container}>
@@ -107,6 +117,7 @@ export default function ActionButton({ name }: ActionButtonType) {
         }}
       ></img>
       {newAction}
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
