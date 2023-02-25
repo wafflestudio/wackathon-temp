@@ -17,7 +17,7 @@ data class WaffleDto(
                     cleanliness = String.format("%.1f", waffle.status.cleanliness).toDouble(),
                     health = String.format("%.1f", waffle.status.health).toDouble()
                 ),
-                level = waffle.level / 50
+                level = waffle.level / 50 + 1
             )
         }
     }
