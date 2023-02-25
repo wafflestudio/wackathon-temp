@@ -6,7 +6,7 @@ import kotlin.math.roundToInt
 
 data class WaffleDto(
     val status: WaffleStatus,
-    val level: Int
+    val level: Double
 ) {
     companion object {
         fun of(waffle: Waffle): WaffleDto {
@@ -17,7 +17,7 @@ data class WaffleDto(
                     cleanliness = String.format("%.1f", waffle.status.cleanliness).toDouble(),
                     health = String.format("%.1f", waffle.status.health).toDouble()
                 ),
-                level = waffle.level / 50 + 1
+                level = waffle.level / 50.0 + 1
             )
         }
     }
