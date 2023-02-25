@@ -7,9 +7,14 @@
   justify-content: center;
   align-items: center;
   margin-right: 26px;
+
+  img {
+    position: absolute;
+  }
 }
 
 .username {
+  top: 14%;
   position: absolute;
   z-index: 1;
 }

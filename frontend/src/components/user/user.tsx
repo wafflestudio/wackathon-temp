@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './user.module.scss';
 import profile from '../../resources/profile.svg';
+import person from '../../resources/person.png';
 import { useParams } from 'react-router-dom';
 import { apiGetUserInfo } from '../../lib/api';
 
@@ -16,7 +17,8 @@ export default function User() {
 
   return (
     <div className={styles.user}>
-      <img src={profile}></img>
+      <img src={person} alt={person}></img>
+      <img src={profile} alt={profile}></img>
       <div className={styles.username}>{username}</div>
     </div>
   );
