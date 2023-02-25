@@ -20,23 +20,31 @@ export default function Character() {
 
   useEffect(() => {
     if (user === Number(userId)) {
-      if (detailStatus?.health && detailStatus?.health <= 30) {
-        setCharacterImg(waffleSick);
-        console.log('sick');
-      } else if (detailStatus?.cleanliness && detailStatus?.cleanliness <= 30) {
-        console.log('dirty');
-        setCharacterImg(waffleDirty);
-      } else if (detailStatus?.hungry && detailStatus?.hungry <= 30) {
-        console.log('hungry');
-        setCharacterImg(waffleHungry);
-      } else if (detailStatus?.thirsty && detailStatus?.thirsty <= 30) {
-        console.log('thirsty');
-        setCharacterImg(waffleDry);
+      if (detailStatus) {
+        if (detailStatus?.health <= 30) {
+          setCharacterImg(waffleSick);
+          console.log('sick');
+        } else if (detailStatus?.cleanliness <= 30) {
+          console.log('dirty');
+          setCharacterImg(waffleDirty);
+        } else if (detailStatus?.hungry <= 30) {
+          console.log('hungry');
+          setCharacterImg(waffleHungry);
+        } else if (detailStatus?.thirsty <= 30) {
+          console.log('thirsty');
+          setCharacterImg(waffleDry);
+        }
       }
     } else if (user !== Number(userId)) {
       setCharacterImg(waffleBasicB);
     }
-  }, [detailStatus]);
+  }, [
+    detailStatus?.cleanliness,
+    detailStatus?.health,
+    detailStatus?.hungry,
+    detailStatus?.thirsty,
+    user,
+  ]);
 
   // icon = waffleHungry;
   return (
