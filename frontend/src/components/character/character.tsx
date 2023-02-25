@@ -65,7 +65,14 @@ export default function Character() {
   ]);
 
   const lookBack = () => {
-    setCharacterImg('');
+    if (characterImg === waffleBasicB) {
+      setCharacterImg(waffleBack);
+      setPollRunning(false);
+      setTimeout(() => {
+        setPollRunning(true);
+        setCharacterImg(waffleBasicB);
+      }, 1000);
+    }
   };
 
   // icon = waffleHungry;
