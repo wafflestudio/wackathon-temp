@@ -11,6 +11,7 @@ import waterActionF from '../../resources/waffle_water_f.gif';
 import washActionF from '../../resources/waffle_wash_f.gif';
 import cureActionF from '../../resources/waffle_cure_f.gif';
 import waffleBasic from '../../resources/waffle_basic.gif';
+import axios from 'axios';
 
 type ActionButtonType = {
   name: string;
@@ -66,14 +67,21 @@ export default function ActionButton({ name }: ActionButtonType) {
   const previousCharacterImg = useRef(characterImg);
 
   const action = () => {
-    doAction(name, Number(userId), 1);
-    previousCharacterImg.current = characterImg;
-    setCharacterImg(actionIcon);
-    setPollRunning(false);
-    setTimeout(() => {
-      setPollRunning(true);
-      setCharacterImg(previousCharacterImg.current);
-    }, 5000);
+    try {
+      doAction(name, Number(userId), 1);
+      previousCharacterImg.current = characterImg;
+      setCharacterImg(actionIcon);
+      setPollRunning(false);
+      setTimeout(() => {
+        setPollRunning(true);
+        setCharacterImg(previousCharacterImg.current);
+      }, 5000);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+      }
+      console.log(error);
+    }
   };
 
   const statusNumber = status?.waffle.status[newName] ?? 0;
