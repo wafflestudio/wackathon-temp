@@ -39,6 +39,8 @@ export default function Character() {
         } else if (detailStatus?.thirsty <= 30) {
           console.log('thirsty');
           setCharacterImg(waffleDry);
+        } else {
+          setCharacterImg(waffleBasic);
         }
       }
     } else if (user !== Number(userId)) {

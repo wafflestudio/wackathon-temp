@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './actionButton.module.scss';
 import { useLocation, useParams } from 'react-router-dom';
 import { useStatusContext } from '../../context/statusContext';
@@ -63,13 +63,16 @@ export default function ActionButton({ name }: ActionButtonType) {
       break;
   }
 
+  const previousCharacterImg = useRef(characterImg);
+
   const action = () => {
     doAction(name, Number(userId), 1);
+    previousCharacterImg.current = characterImg;
     setCharacterImg(actionIcon);
     setPollRunning(false);
     setTimeout(() => {
       setPollRunning(true);
-      setCharacterImg(waffleBasic);
+      setCharacterImg(previousCharacterImg.current);
     }, 5000);
   };
 
