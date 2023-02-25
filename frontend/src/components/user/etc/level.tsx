@@ -4,11 +4,12 @@ import level1 from '../../../resources/level1.svg';
 import level2 from '../../../resources/level2.svg';
 import { useSearchParams } from 'react-router-dom';
 import { useStatusContext } from '../../../context/statusContext';
+import levelBar from '../../../resources/levelbar.svg';
 
 export default function Level() {
   const { status } = useStatusContext();
-  console.log(status?.waffle.level);
   let levelImg = '';
+  let levelStatus = 0;
   if (status) {
     if (status?.waffle.level >= 2) {
       levelImg = level2;
@@ -17,5 +18,25 @@ export default function Level() {
     }
   }
 
-  return <img className={styles.img} src={levelImg}></img>;
+  if (status) {
+    levelStatus = status.waffle.level - Math.floor(status.waffle.level);
+  }
+
+  return (
+    <>
+      <img className={styles.img} src={levelImg}></img>
+      <img
+        className={styles.levelImg}
+        src={levelBar}
+        style={{
+          background: `linear-gradient(to right, #7CFFA0 ${
+            levelStatus ? levelStatus * 100 : 0
+          }%, transparent 10%)`,
+          objectFit: 'cover',
+          overflow: 'hidden',
+          borderRadius: '10px',
+        }}
+      ></img>
+    </>
+  );
 }
