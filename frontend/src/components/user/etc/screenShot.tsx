@@ -24,7 +24,7 @@ export default function ScreenShot() {
         src={screenShot}
         onClick={takeScreenshot}
       ></img>
-      <div className={styles.text}>screenshot</div>
+      <div className={styles.text}>스크린샷</div>
     </div>
   );
 }
