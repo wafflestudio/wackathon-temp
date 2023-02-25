@@ -8,6 +8,14 @@ import { useStatusContext } from '../../../context/statusContext';
 export default function Level() {
   const { status } = useStatusContext();
   console.log(status?.waffle.level);
+  let levelImg = '';
+  if (status) {
+    if (status?.waffle.level >= 2) {
+      levelImg = level2;
+    } else {
+      levelImg = level1;
+    }
+  }
 
-  return <img className={styles.img} src={level1}></img>;
+  return <img className={styles.img} src={levelImg}></img>;
 }
