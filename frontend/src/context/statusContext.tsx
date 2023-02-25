@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { InfoType, UserType } from '../lib/types';
+import { InfoType, StatusType, UserType } from '../lib/types';
 import { apiAction, apiGetUserInfo, apiPoll, useInterval } from '../lib/api';
 import { useParams } from 'react-router-dom';
 import waffleBasic from '../resources/waffle_basic.gif';
@@ -12,13 +12,14 @@ type StatusContextType = {
   user: number;
   characterImg: string;
   setCharacterImg: React.Dispatch<React.SetStateAction<string>>;
+  detailStatus: StatusType | undefined;
 };
 
 const StatusContext = createContext<StatusContextType>({} as StatusContextType);
 
 export function StatusProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<InfoType | undefined>();
-
+  const [detailStatus, setDetailStatus] = useState<StatusType | undefined>();
   const [user, setUser] = useState(0);
 
   const [characterImg, setCharacterImg] = useState(waffleBasic);
@@ -34,6 +35,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
     const res = await apiPoll(1);
     console.log(res);
     setStatus(res.data);
+    setDetailStatus(res.data.waffle.status);
     setUser(res.data.lastUserAction.userId);
   };
 
@@ -63,6 +65,7 @@ export function StatusProvider({ children }: { children: React.ReactNode }) {
         doPoll,
         doAction,
         user,
+        detailStatus,
       }}
     >
       {children}
